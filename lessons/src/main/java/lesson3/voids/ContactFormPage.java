@@ -1,4 +1,4 @@
-package lesson3;
+package lesson3.voids;
 
 import lesson3.enums.LeftSideMenu;
 import org.openqa.selenium.By;
@@ -8,9 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class ContactFormPage {
-
-    private WebDriver driver;
+public class ContactFormPage extends BasePage {
 
     @FindBy(id = "last-name")
     private WebElement lastNameTextField;
@@ -19,11 +17,10 @@ public class ContactFormPage {
     private WebElement genderSelect;
 
     public ContactFormPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
-    public void setLastNameTextField(String text) {
+    public void setTextLastNameTextField(String text) {
         lastNameTextField.sendKeys(text);
     }
 
@@ -33,10 +30,6 @@ public class ContactFormPage {
 
     public String getGenderDropdownValue() {
         return genderSelect.getAttribute("value");
-    }
-
-    public void clickLeftSideMenu(LeftSideMenu menuItem) {
-        driver.findElement(By.linkText(menuItem.getName())).click();
     }
 
 }

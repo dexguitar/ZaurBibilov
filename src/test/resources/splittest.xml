@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Example suite2">
+
+    <test name="suite1">
+        <classes>
+            <class name="lesson1.Example01">
+                <methods>
+                    <include name="sumTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="suite2">
+        <classes>
+            <class name="lesson1.Example01">
+                <methods>
+                    <include name="substractTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

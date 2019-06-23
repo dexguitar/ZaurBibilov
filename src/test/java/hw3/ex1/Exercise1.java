@@ -2,55 +2,64 @@ package hw3.ex1;
 
 import base.BaseTest;
 import hw3.enums.TopMenu;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static org.testng.Assert.*;
 
 public class Exercise1 extends BaseTest {
 
-    @Test(priority = 1)
-    public void loginTest() {
-//        Assert The Browser title
-        assertEquals(hp.getPageTitle(), "Home Page");
-
-//        Perform login
-        hp.login(userInfo.getProperty("user.name"), userInfo.getProperty("user.password"));
-
-//        Assert User name in the top-right corner of screen that user is logged in
-        assertEquals(hp.getTopRightUserName(), "PITER CHAILOVSKII");
-    }
-
-    @Test(priority = 2)
+    @Test
     public void homePageContentTest() {
 //        Assert Browser title
         assertEquals(hp.getPageTitle(), "Home Page");
 
 //        Assert that there are 4 items on the header section are displayed and they have proper texts
+        List<String> actualTopMenuElements = Stream.of(TopMenu.values())
+                .map(el -> el.getName()).collect(Collectors.toList());
+        List<String> expectedHeaderMenuText = Arrays.asList("HOME", "CONTACT FORM",
+                "SERVICE", "METALS & COLORS");
+
         assertEquals(hp.getMenuItems().size(), 4);
-        assertEquals(hp.getMenuItems().get(0).getText(), TopMenu.HOME.getName());
-        assertEquals(hp.getMenuItems().get(1).getText(), TopMenu.CONTACT_FORM.getName());
-        assertEquals(hp.getMenuItems().get(2).getText(), TopMenu.SERVICE.getName());
-        assertEquals(hp.getMenuItems().get(3).getText(), TopMenu.METALS_AND_COLORS.getName());
+        assertEquals(actualTopMenuElements, expectedHeaderMenuText);
 
 //        Assert that there are 4 images on the Index Page and they are displayed
         assertEquals(hp.getImages().size(), 4);
-        for (int i = 0; i < 4; i++) {
-            assertTrue(hp.getImages().get(i).isDisplayed());
+
+        SoftAssert sa = new SoftAssert();
+        for (WebElement image: hp.getImages()) {
+            sa.assertTrue(image.isDisplayed());
         }
+        sa.assertAll();
 
 //        Assert that there are 4 texts on the Index Page under icons and they have proper text
+        List<String> textContents = hp.getTexts()
+                .stream().map(el -> el.getText()).collect(Collectors.toList());
+        List<String> expectedTextContents = Arrays.asList(
+                "To include good practices\n" +
+                        "and ideas from successful\n" +
+                        "EPAM project",
+                "To be flexible and\n" +
+                        "customizable",
+                "To be multiplatform",
+                "Already have good base\n" +
+                        "(about 20 internal and\n" +
+                        "some external projects),\n" +
+                        "wish to get more…"
+        );
+
         assertEquals(hp.getTexts().size(), 4);
-        for (int i = 0; i < 4; i++) {
-            assertTrue(hp.getTexts().get(i).isDisplayed());
+        assertEquals(textContents, expectedTextContents);
+        for (WebElement text: hp.getTexts()) {
+            sa.assertTrue(text.isDisplayed());
         }
-        assertTrue(hp.getTexts().get(0).getText().contains("include good practices\n" +
-                "and ideas from successful"));
-        assertTrue(hp.getTexts().get(1).getText().contains("be flexible and\n" +
-                "customizable"));
-        assertTrue(hp.getTexts().get(2).getText().contains("be multiplatform"));
-        assertTrue(hp.getTexts().get(3).getText().contains("about 20 internal and\n" +
-                "some external projects"));
+        sa.assertAll();
 
 //        Assert a text of the main headers
         assertTrue(hp.getMainTitle().isDisplayed());
@@ -62,8 +71,7 @@ public class Exercise1 extends BaseTest {
         assertTrue(hp.getiFrame().isDisplayed());
 
 //        Switch to the iframe and check that there is Epam logo in the left top conner of iframe
-        hp.switchToIFrame();
-        hp.checkEpamLogo();
+        checkEpamLogoInIframe();
 
 //        Switch back to original window
         hp.switchToMainContent();
@@ -80,6 +88,11 @@ public class Exercise1 extends BaseTest {
 
 //        Assert that there is Footer
         assertTrue(hp.getFooter().isDisplayed());
+    }
+
+    private void checkEpamLogoInIframe() {
+        hp.switchToIFrame();
+        hp.getEpamLogo();
     }
 
 }

@@ -1,6 +1,5 @@
 package base;
 
-import hw3.utils.FileUtils;
 import hw3.voids.DiffElementsPage;
 import hw3.voids.HomePage;
 import org.openqa.selenium.By;
@@ -13,24 +12,21 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.nio.file.Paths;
-import java.util.Properties;
+import java.util.List;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class BaseTest {
 
     protected WebDriver driver;
     protected HomePage hp;
     protected DiffElementsPage dep;
-    protected Properties userInfo;
 
     @BeforeSuite
     public void initialSetUp() {
         System.setProperty("webdriver.chrome.driver",
                 Paths.get("src/test/resources/driver/chromedriver")
                         .toAbsolutePath().toString());
-        userInfo = FileUtils.readUserFromFile("src/test/resources/properties/user.properties");
     }
 
     @BeforeMethod
@@ -71,6 +67,14 @@ public class BaseTest {
 
     protected void checkElementIsSelected(WebElement element) {
         assertTrue(element.isSelected());
+    }
+
+    protected void assertListSize(List<WebElement> elementList, int size) {
+        assertEquals(elementList.size(), size);
+    }
+
+    protected void clickElement(WebElement element) {
+        element.click();
     }
 
     @AfterMethod

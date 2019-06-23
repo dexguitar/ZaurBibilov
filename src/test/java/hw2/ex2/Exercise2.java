@@ -88,7 +88,8 @@ public class Exercise2 extends BaseTest {
 
 //        Assert that for dropdown there is a log row and value
 //        corresponds to the selected value.
-        WebElement colorLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Colors') and contains(text(), 'Yellow')]"));
+        WebElement colorLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Colors') " +
+                "and contains(text(), 'Yellow')]"));
         checkElementIsDisplayed(colorLogRow);
 
 //        Deselect and assert checkboxes: Water, Wind

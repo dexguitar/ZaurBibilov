@@ -10,52 +10,58 @@ public class DiffElementsPage extends BasePage {
 
     public static final String DIFF_ELEMENTS_PAGE_LINK = "https://epam.github.io/JDI/different-elements.html";
 
-    @FindBy(xpath = "//*[@class='checkbox-row'][1]//label")
+    @FindBy(xpath = "//*[@type='checkbox']")
     private List<WebElement> checkboxes;
 
-    @FindBy(xpath = "//*[@class='checkbox-row'][2]//label")
+    @FindBy(xpath = "//*[@type='radio']")
     private List<WebElement> radios;
 
-    @FindBy(xpath = "//*[@class='colors']//select")
+    @FindBy(xpath = "//select")
     private List<WebElement> dropdowns;
 
-    @FindBy(xpath = "//*[@class='main-content-hg']//*[contains(@value, 'Button')]")
+    @FindBy(xpath = "//*[contains(@value, 'Button')]")
     private List<WebElement> buttons;
 
-    @FindBy(xpath = "//*[@class='uui-side-bar right-fix-panel mCustomScrollbar _mCS_2 mCS_no_scrollbar']")
+    @FindBy(xpath = "//*[contains(@class, 'right-fix-panel')]")
     private WebElement rightSection;
 
     @FindBy(xpath = "//*[@class='sidebar-menu']")
     private WebElement leftSection;
 
-    @FindBy(xpath = "//*[@class='label-checkbox'][1]//input")
+    @FindBy(xpath = "//*[@class='label-checkbox' and contains(., 'Water')]//input")
     private WebElement waterCheckbox;
 
-    @FindBy(xpath = "//*[@class='label-checkbox'][3]//input")
+    @FindBy(xpath = "//*[@class='label-checkbox' and contains(., 'Wind')]//input")
     private WebElement windCheckbox;
 
-    @FindBy(xpath = "//ul[@class='panel-body-list logs']//li[contains(text(), 'Water: condition changed to true')]")
+    @FindBy(xpath = "//li[contains(text(), 'Water') " +
+            "and contains(text(), 'true')]")
     private WebElement waterLogRowTrue;
 
-    @FindBy(xpath = "//ul[@class='panel-body-list logs']//li[contains(text(), 'Wind: condition changed to true')]")
+    @FindBy(xpath = "//li[contains(text(), 'Wind') " +
+            "and contains(text(), 'true')]")
     private WebElement windLogRowTrue;
 
-    @FindBy(xpath = "//ul[@class='panel-body-list logs']//li[contains(text(), 'Water: condition changed to false')]")
+    @FindBy(xpath = "//li[contains(text(), 'Water') " +
+            "and contains(text(), 'false')]")
     private WebElement waterLogRowFalse;
 
-    @FindBy(xpath = "//ul[@class='panel-body-list logs']//li[contains(text(), 'Wind: condition changed to false')]")
+    @FindBy(xpath = "//li[contains(text(), 'Wind') " +
+            "and contains(text(), 'false')]")
     private WebElement windLogRowFalse;
 
-    @FindBy(xpath = "//*[@class='label-radio'][4]//input")
+    @FindBy(xpath = "//*[@class='label-radio' " +
+            "and contains(., 'Selen')]//input")
     private WebElement selenCheckbox;
 
-    @FindBy(xpath = "//*[@class='panel-body-list logs']//li[contains(text(), 'metal: value changed to  Selen')]")
+    @FindBy(xpath = "//li[contains(text(), 'metal') " +
+            "and contains(text(), 'Selen')]")
     private WebElement selenLogRow;
 
-    @FindBy(xpath = "//select[@class='uui-form-element']//option[contains(text(), 'Yellow')]")
+    @FindBy(xpath = "//option[contains(text(), 'Yellow')]")
     private WebElement yellowDropdownOption;
 
-    @FindBy(xpath = "//*[@class='panel-body-list logs']//li[contains(text(), 'Colors: value changed to Yellow')]")
+    @FindBy(xpath = "//li[contains(text(), 'Colors') and contains(text(), 'Yellow')]")
     private WebElement colorLogRow;
 
     public DiffElementsPage(WebDriver driver) {

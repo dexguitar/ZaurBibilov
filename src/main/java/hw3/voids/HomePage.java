@@ -70,18 +70,11 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public void login(String userName, String password) {
-        userIcon.click();
-        loginNameTextField.sendKeys(userName);
-        this.password.sendKeys(password);
-        loginButton.click();
-    }
-
     public void switchToIFrame() {
         driver.switchTo().frame("iframe");
     }
 
-    public WebElement checkEpamLogo() {
+    public WebElement getEpamLogo() {
         return epamLogo;
     }
 

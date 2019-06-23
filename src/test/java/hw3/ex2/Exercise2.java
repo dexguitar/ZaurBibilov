@@ -4,6 +4,9 @@ import base.BaseTest;
 import hw3.enums.TopMenu;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.testng.Assert.*;
 
 public class Exercise2 extends BaseTest {
@@ -13,23 +16,15 @@ public class Exercise2 extends BaseTest {
 //        Assert Browser title
         assertEquals(hp.getPageTitle(), "Home Page");
 
-//        Perform login
-        hp.login(userInfo.getProperty("user.name"), userInfo.getProperty("user.password"));
-
-//        Assert User name in the left-top side
-//        of screen that user is logged in
-        assertEquals(userInfo.getProperty("user.user.name").toUpperCase(), "PITER CHAILOVSKII");
-
 //        Click on "Service" subcategory in the header
 //        and check that drop down contains options
         hp.clickTopMenu(TopMenu.SERVICE);
-        hp.providedServiceDropdownElements.add("SUPPORT");
-        hp.providedServiceDropdownElements.add("DATES");
-        hp.providedServiceDropdownElements.add("COMPLEX TABLE");
-        hp.providedServiceDropdownElements.add("SIMPLE TABLE");
-        hp.providedServiceDropdownElements.add("TABLE WITH PAGES");
-        hp.providedServiceDropdownElements.add("DIFFERENT ELEMENTS");
-        assertTrue(hp.getServiceDropdownContents().containsAll(hp.providedServiceDropdownElements));
+        List<String> providedServiceDropdownContents = Arrays
+                .asList("SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE",
+                        "TABLE WITH PAGES", "DIFFERENT ELEMENTS");
+
+        assertTrue(hp.getServiceDropdownContents()
+                .containsAll(providedServiceDropdownContents));
 
 //        Open through the header menu
 //        Service -> Different Elements Page

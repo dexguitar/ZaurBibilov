@@ -24,6 +24,7 @@ public class Exercise2 extends BaseTest {
         driver.findElement(By.xpath("//li[@class='dropdown']//a[contains(text(), 'Service')]")).click();
         List<WebElement> actualDropdownElements = driver.findElements(By.xpath("//*[@class='dropdown open'" +
                 "]//ul[@class='dropdown-menu']//li"));
+        // TODO el -> el.getText() could be replaced by WebElement::getText
         List<String> dropDownContents = actualDropdownElements
                 .stream().map(el -> el.getText()).collect(Collectors.toList());
         List<String> expectedElements = Arrays
@@ -57,8 +58,12 @@ public class Exercise2 extends BaseTest {
         checkElementIsDisplayed(driver.findElement(By.xpath("//*[@class='sidebar-menu']")));
 
 //        Select checkboxes: Water, Wind
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Water')]//input")).click();
         driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Wind')]//input")).click();
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         checkElementIsSelected(driver.findElement
                 (By.xpath("//*[@class='label-checkbox' and contains(., 'Water')]//input")));
         checkElementIsSelected(driver.findElement
@@ -66,33 +71,47 @@ public class Exercise2 extends BaseTest {
 
 //        Assert that for each checkbox there is an individual log row
 //        and value corresponds to the status of checkbox.
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         WebElement waterLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Water') " +
                 "and contains(text(), 'true')]"));
         checkElementIsDisplayed(waterLogRow);
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         WebElement windLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Wind') " +
                 "and contains(text(), 'true')]"));
         checkElementIsDisplayed(windLogRow);
 
 //        Select radio: Selen
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         driver.findElement(By.xpath("//*[@class='label-radio' " +
                 "and contains(., 'Selen')]//input")).click();
 
 //      Assert that for radiobutton there is a log row
 //      and value corresponds to the status of radiobutton.
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         WebElement selenLogRow = driver.findElement(By.xpath("//li[contains(text(), 'metal') " +
                 "and contains(text(), 'Selen')]"));
         checkElementIsDisplayed(selenLogRow);
 
 //        Select in dropdown: Yellow
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         driver.findElement(By.xpath("//option[contains(text(), 'Yellow')]")).click();
 
 //        Assert that for dropdown there is a log row and value
 //        corresponds to the selected value.
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         WebElement colorLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Colors') " +
                 "and contains(text(), 'Yellow')]"));
         checkElementIsDisplayed(colorLogRow);
 
 //        Deselect and assert checkboxes: Water, Wind
+        // TODO Is it possible avoid using name of checkbox, radiobuttons and ect. as locator?
+        // TODO It could be as a method parameter
         driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Water')]//input")).click();
         driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Wind')]//input")).click();
         assertFalse(driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Water')]//input")).isSelected());

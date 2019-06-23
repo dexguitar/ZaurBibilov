@@ -42,6 +42,7 @@ public class Exercise1 extends BaseTest {
 
 //        Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> texts = driver.findElements(By.cssSelector(".benefit-txt"));
+        // TODO el -> el.getText() could be replaced by WebElement::getText
         List<String> textContents = texts
                 .stream().map(el -> el.getText()).collect(Collectors.toList());
         List<String> expectedTextContents = Arrays.asList(
@@ -58,6 +59,7 @@ public class Exercise1 extends BaseTest {
         );
 
 
+        // TODO It looks like duplication code L27 - L31
         assertEquals(texts.size(), 4);
         assertEquals(textContents, expectedTextContents);
         for (WebElement text:texts) {

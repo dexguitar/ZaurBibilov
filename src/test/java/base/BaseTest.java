@@ -38,11 +38,13 @@ public class BaseTest {
         loginTest("epam", "1234");
     }
 
+    // TODO Why method name has suffix Text????
     protected void loginTest(String login, String password) {
 //        Open test site by URL
         assertEquals(driver.getCurrentUrl(), "https://epam.github.io/JDI/index.html");
 
 //        Assert The Browser title
+        // TODO Why do you do not use checkOpenPageTitle?
         assertEquals(driver.getTitle(), "Home Page");
 
 //        Perform login
@@ -69,10 +71,12 @@ public class BaseTest {
         assertTrue(element.isSelected());
     }
 
+    // TODO This method does not use. Is it required?
     protected void assertListSize(List<WebElement> elementList, int size) {
         assertEquals(elementList.size(), size);
     }
 
+    // TODO This method does not use. Is it required?
     protected void clickElement(WebElement element) {
         element.click();
     }

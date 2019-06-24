@@ -14,5 +14,4 @@ public enum LeftSideMenu {
     public String getName() {
         return name;
     }
-
 }

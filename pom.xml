@@ -9,14 +9,19 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+
         <java.version>1.8</java.version>
 
         <testng.version>6.14.3</testng.version>
 
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <allure.version>2.12.1</allure.version>
+        <aspectj.version>1.8.10</aspectj.version>
+
     </properties>
 
     <profiles>
+
         <profile>
             <id>splittest</id>
             <activation>
@@ -34,6 +39,16 @@
             </activation>
             <properties>
                 <suite.xml>src/test/resources/test.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>test-selenium</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/testSelenium.xml</suite.xml>
             </properties>
         </profile>
 
@@ -76,9 +91,11 @@
                 <suite.xml>src/test/resources/hw3/hw3Exercise2.xml</suite.xml>
             </properties>
         </profile>
+
     </profiles>
 
     <dependencies>
+        <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -95,14 +112,14 @@
             <systemPath>${project.basedir}/src/test/resources/hw1/calculator-1.0.jar</systemPath>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
+        <!-- Hamcrest -->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
@@ -110,7 +127,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <!-- Commons.io -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -140,10 +157,33 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Allure TestNG -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
+        <!-- Allure -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
+        <!-- Jackson Annotations -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.9</version>
+        </dependency>
+
     </dependencies>
 
     <build>
+
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -160,11 +200,24 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.xml}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
+
         </plugins>
+
     </build>
+
 </project>

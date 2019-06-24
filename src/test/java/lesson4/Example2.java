@@ -1,3 +1,4 @@
+
 package lesson4;
 
 import lesson4.builder.User;
@@ -28,8 +29,14 @@ public class Example2 {
     @DataProvider(name = "builder")
     public static Object[][] builder() {
         return new Object[][]{
-                {UserLombok.builder().address("L11").name("Rita").build()},
-                {UserLombok.builder().age(21).name("Ivan").build()}
+                {UserLombok.builder()
+                        .address("L11")
+                        .name("Rita")
+                        .build()},
+                {UserLombok.builder()
+                        .name("Ivan")
+                        .age(21)
+                        .build()}
         };
     }
 

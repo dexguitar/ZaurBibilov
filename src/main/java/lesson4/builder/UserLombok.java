@@ -10,10 +10,8 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class UserLombok {
-
     private String name;
     private String address;
     private int age;
     private String email;
-
 }

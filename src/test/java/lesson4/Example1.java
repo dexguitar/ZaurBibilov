@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -17,9 +16,8 @@ public class Example1 {
     @BeforeMethod
     public void setUp() {
         Configuration.browser = Browsers.FIREFOX;
-        Configuration.pollingInterval = 100;
+        Configuration.pollingInterval = 500;
         Configuration.timeout = 5000;
-
         Configuration.reportsFolder = "target/selenide/reports/test";
     }
 
@@ -29,12 +27,12 @@ public class Example1 {
 
         $(By.id("user-icon")).click();
         $(By.id("name")).sendKeys("epam");
-        $(("#password")).sendKeys("1234");
+        $("#password").sendKeys("1234");
         $(By.xpath("//button[@id='login-button']")).click();
 
-        $("#user-name").shouldBe(exactText("PETER CHAILOVSKII"));
+        $("#user-name").shouldHave(text("PITER CHAILOVSKII1"));
 
-//        How to get Selenium WebDriver
+        // How to get Selenium WebDriver
 //        WebElement wrappedElement = $("").getWrappedElement();
 //        new Actions(getWebDriver()).dragAndDrop(wrappedElement, wrappedElement);
     }
@@ -51,5 +49,4 @@ public class Example1 {
 
         cfp.getGenderDropdownValue().shouldHave(text("Female"));
     }
-
 }

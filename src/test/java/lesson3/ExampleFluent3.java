@@ -1,13 +1,13 @@
 package lesson3;
 
-import base.BaseLessonTest;
+import base.BaseTest;
 import lesson3.fluent.ContactFormPage;
 import lesson3.fluent.HomePage;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
-public class ExampleFluent3 extends BaseLessonTest {
+public class ExampleFluent3 extends BaseTest {
 
     @Test
     public void contactPageTest() {

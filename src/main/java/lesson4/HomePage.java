@@ -26,7 +26,6 @@ public class HomePage {
         $("#password").sendKeys(password);
         loginButton.click();
     }
-
     public void clickLeftSideMenu(LeftSideMenu menuItem) {
         element(By.linkText(menuItem.getName())).click();
     }

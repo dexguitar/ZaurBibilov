@@ -1,13 +1,13 @@
 package lesson3;
 
-import base.BaseLessonTest;
+import base.BaseTest;
 import lesson3.steps.ContactFormPageSteps;
 import lesson3.voids.HomePage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ExampleSteps3 extends BaseLessonTest {
+public class ExampleSteps3 extends BaseTest {
 
     ContactFormPageSteps contactFormPageSteps;
 

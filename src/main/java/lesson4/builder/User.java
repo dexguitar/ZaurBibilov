@@ -9,7 +9,7 @@ public class User {
 
     private static Builder builder;
 
-    public User() {
+    private User() {
     }
 
     public String getName() {
@@ -77,7 +77,7 @@ public class User {
             u.name = this.name;
             u.age = this.age;
             u.address = this.address;
-            u.email = this.email;
+            u.email= this.email;
             return u;
         }
     }

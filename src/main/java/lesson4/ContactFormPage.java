@@ -1,9 +1,8 @@
 package lesson4;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
-
-import static com.codeborne.selenide.Selenide.page;
 
 public class ContactFormPage {
 
@@ -14,7 +13,7 @@ public class ContactFormPage {
     private SelenideElement genderSelect;
 
     public ContactFormPage() {
-        page(this);
+        Selenide.page(this);
     }
 
     public void setTextLastNameTextField(String text) {

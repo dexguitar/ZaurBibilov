@@ -1,6 +1,6 @@
 package lesson3;
 
-import base.BaseLessonTest;
+import base.BaseTest;
 import lesson3.enums.LeftSideMenu;
 import lesson3.voids.ContactFormPage;
 import lesson3.voids.HomePage;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class ExampleVoid3 extends BaseLessonTest {
+public class ExampleVoid3 extends BaseTest {
 
     @Test
     public void seleniumOpenPageTest() {

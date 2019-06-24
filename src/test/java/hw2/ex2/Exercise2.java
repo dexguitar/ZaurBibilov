@@ -25,7 +25,7 @@ public class Exercise2 extends BaseTest {
         List<WebElement> actualDropdownElements = driver.findElements(By.xpath("//*[@class='dropdown open'" +
                 "]//ul[@class='dropdown-menu']//li"));
         List<String> dropDownContents = actualDropdownElements
-                .stream().map(el -> el.getText()).collect(Collectors.toList());
+                .stream().map(WebElement::getText).collect(Collectors.toList());
         List<String> expectedElements = Arrays
                 .asList("SUPPORT", "DATES", "COMPLEX TABLE", "SIMPLE TABLE",
                         "TABLE WITH PAGES", "DIFFERENT ELEMENTS");
@@ -57,54 +57,45 @@ public class Exercise2 extends BaseTest {
         checkElementIsDisplayed(driver.findElement(By.xpath("//*[@class='sidebar-menu']")));
 
 //        Select checkboxes: Water, Wind
-        driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Water')]//input")).click();
-        driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Wind')]//input")).click();
-        checkElementIsSelected(driver.findElement
-                (By.xpath("//*[@class='label-checkbox' and contains(., 'Water')]//input")));
-        checkElementIsSelected(driver.findElement
-                (By.xpath("//*[@class='label-checkbox' and contains(., 'Wind')]//input")));
+        findCheckbox("Water").click();
+        findCheckbox("Wind").click();
+        checkElementIsSelected(findCheckbox("Water"));
+        checkElementIsSelected(findCheckbox("Wind"));
 
 //        Assert that for each checkbox there is an individual log row
 //        and value corresponds to the status of checkbox.
-        WebElement waterLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Water') " +
-                "and contains(text(), 'true')]"));
+        WebElement waterLogRow = findLogRow("Water", "true");
         checkElementIsDisplayed(waterLogRow);
-        WebElement windLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Wind') " +
-                "and contains(text(), 'true')]"));
+        WebElement windLogRow = findLogRow("Wind", "true");
         checkElementIsDisplayed(windLogRow);
 
 //        Select radio: Selen
-        driver.findElement(By.xpath("//*[@class='label-radio' " +
-                "and contains(., 'Selen')]//input")).click();
+        findRadioButton("Selen").click();
 
 //      Assert that for radiobutton there is a log row
 //      and value corresponds to the status of radiobutton.
-        WebElement selenLogRow = driver.findElement(By.xpath("//li[contains(text(), 'metal') " +
-                "and contains(text(), 'Selen')]"));
+        WebElement selenLogRow = findLogRow("metal", "Selen");
         checkElementIsDisplayed(selenLogRow);
 
 //        Select in dropdown: Yellow
-        driver.findElement(By.xpath("//option[contains(text(), 'Yellow')]")).click();
+        findOption("Yellow").click();
 
 //        Assert that for dropdown there is a log row and value
 //        corresponds to the selected value.
-        WebElement colorLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Colors') " +
-                "and contains(text(), 'Yellow')]"));
+        WebElement colorLogRow = findLogRow("Colors", "Yellow");
         checkElementIsDisplayed(colorLogRow);
 
 //        Deselect and assert checkboxes: Water, Wind
-        driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Water')]//input")).click();
-        driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Wind')]//input")).click();
-        assertFalse(driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Water')]//input")).isSelected());
-        assertFalse(driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., 'Wind')]//input")).isSelected());
+        findCheckbox("Water").click();
+        findCheckbox("Wind").click();
+        checkElementIsDeSelected(findCheckbox("Water"));
+        checkElementIsDeSelected(findCheckbox("Wind"));
 
 //        Assert that for each checkbox there are
 //        an individual log row and value
 //        corresponds to the status of checkbox
-        waterLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Water') " +
-                "and contains(text(), 'false')]"));
-        windLogRow = driver.findElement(By.xpath("//li[contains(text(), 'Wind') " +
-                "and contains(text(), 'false')]"));
+        waterLogRow = findLogRow("Water", "false");
+        windLogRow = findLogRow("Wind", "false");
         checkElementIsDisplayed(waterLogRow);
         checkElementIsDisplayed(windLogRow);
     }

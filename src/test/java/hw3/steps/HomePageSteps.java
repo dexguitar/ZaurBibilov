@@ -76,8 +76,4 @@ public class HomePageSteps {
         assertEquals(hp.getSubHeader().getText(), "JDI GITHUB");
     }
 
-    public void assertIFrame() {
-        assertTrue(hp.getiFrame().isDisplayed());
-    }
-
 }

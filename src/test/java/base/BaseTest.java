@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeSuite;
 
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.testng.Assert.*;
 
@@ -35,15 +36,15 @@ public class BaseTest {
         driver.get("https://epam.github.io/JDI");
         hp = PageFactory.initElements(driver, HomePage.class);
         dep = PageFactory.initElements(driver, DiffElementsPage.class);
-        loginTest("epam", "1234");
+        login("epam", "1234");
     }
 
-    protected void loginTest(String login, String password) {
+    protected void login(String login, String password) {
 //        Open test site by URL
         assertEquals(driver.getCurrentUrl(), "https://epam.github.io/JDI/index.html");
 
 //        Assert The Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        checkOpenPageTitle("Home Page");
 
 //        Perform login
         driver.findElement(By.id("user-icon")).click();
@@ -69,12 +70,37 @@ public class BaseTest {
         assertTrue(element.isSelected());
     }
 
-    protected void assertListSize(List<WebElement> elementList, int size) {
-        assertEquals(elementList.size(), size);
+    protected void checkElementIsDeSelected(WebElement element) {
+        assertFalse(element.isSelected());
     }
 
-    protected void clickElement(WebElement element) {
-        element.click();
+    protected void checkSizeAndContains(List<WebElement> container, List<String> contained,
+                                        int size) {
+        List<String> actualContents = container.stream()
+                .map(WebElement::getText).collect(Collectors.toList());
+
+        assertEquals(container.size(), size);
+        assertEquals(actualContents, contained);
+    }
+
+    protected WebElement findCheckbox(String artifact) {
+        return driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., '"
+                + artifact + "')]//input"));
+    }
+
+    protected WebElement findRadioButton(String artifact) {
+        return driver.findElement(By.xpath("//*[@class='label-radio' " +
+                "and contains(., '" + artifact + "')]//input"));
+    }
+
+    protected WebElement findOption(String artifact) {
+        return driver.findElement(By.xpath("//option[contains(text(), '"
+                + artifact + "')]"));
+    }
+
+    protected WebElement findLogRow(String artifact, String value) {
+        return driver.findElement(By.xpath("//li[contains(text(), '" + artifact + "') " +
+                "and contains(text(), '" + value + "')]"));
     }
 
     @AfterMethod

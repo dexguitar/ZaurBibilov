@@ -8,10 +8,8 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class Exercise1 extends BaseTest {
 
@@ -24,11 +22,8 @@ public class Exercise1 extends BaseTest {
         List<String> expectedHeaderMenuText = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         List<WebElement> topMenuElements = driver.findElements(By.xpath("//ul[contains(@class, " +
                 "'uui-navigation nav navbar')]/li"));
-        List<String> actualTopMenuElements = topMenuElements
-                .stream().map(WebElement::getText).collect(Collectors.toList());
 
-        assertEquals(topMenuElements.size(), 4);
-        assertEquals(actualTopMenuElements, expectedHeaderMenuText);
+        checkSizeAndContains(topMenuElements, expectedHeaderMenuText, 4);
 
 //        Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> images = driver.findElements(By.xpath("//div[@class='benefit-icon']//span"));
@@ -42,9 +37,6 @@ public class Exercise1 extends BaseTest {
 
 //        Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> texts = driver.findElements(By.cssSelector(".benefit-txt"));
-        // TODO el -> el.getText() could be replaced by WebElement::getText
-        List<String> textContents = texts
-                .stream().map(el -> el.getText()).collect(Collectors.toList());
         List<String> expectedTextContents = Arrays.asList(
                 "To include good practices\n" +
                         "and ideas from successful\n" +
@@ -57,11 +49,8 @@ public class Exercise1 extends BaseTest {
                         "some external projects),\n" +
                         "wish to get more…"
         );
-
-
-        // TODO It looks like duplication code L27 - L31
-        assertEquals(texts.size(), 4);
-        assertEquals(textContents, expectedTextContents);
+      
+        checkSizeAndContains(texts, expectedTextContents, 4);
         for (WebElement text:texts) {
             softAssert.assertTrue(text.isDisplayed());
         }

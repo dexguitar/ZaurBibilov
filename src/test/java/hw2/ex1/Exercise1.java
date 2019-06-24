@@ -49,7 +49,7 @@ public class Exercise1 extends BaseTest {
                         "some external projects),\n" +
                         "wish to get more…"
         );
-
+      
         checkSizeAndContains(texts, expectedTextContents, 4);
         for (WebElement text:texts) {
             softAssert.assertTrue(text.isDisplayed());

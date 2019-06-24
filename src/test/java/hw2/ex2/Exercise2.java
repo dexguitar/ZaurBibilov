@@ -25,6 +25,7 @@ public class Exercise2 extends BaseTest {
         List<WebElement> actualDropdownElements = driver.findElements(By.xpath("//*[@class='dropdown open'" +
                 "]//ul[@class='dropdown-menu']//li"));
         // TODO el -> el.getText() could be replaced by WebElement::getText
+        // TODO Why do you not use checkSizeAndContains from BaseTest?
         List<String> dropDownContents = actualDropdownElements
                 .stream().map(WebElement::getText).collect(Collectors.toList());
         List<String> expectedElements = Arrays

@@ -13,6 +13,7 @@ import static org.testng.Assert.*;
 
 public class DiffElementsPageSteps {
 
+    // TODO Could be extratced to the base class
     private WebDriver driver;
     private HomePage hp;
     private DiffElementsPage dep;

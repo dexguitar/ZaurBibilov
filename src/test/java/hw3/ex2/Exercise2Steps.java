@@ -5,6 +5,7 @@ import hw3.steps.DiffElementsPageSteps;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+// TODO Why this class needed?
 public class Exercise2Steps extends BaseTest {
 
     DiffElementsPageSteps diffElementsPageSteps;
@@ -38,14 +39,17 @@ public class Exercise2Steps extends BaseTest {
         diffElementsPageSteps.assertRightAndLeftSections();
 
 //        Select checkboxes: Water, Wind
+        // TODO May be it is better send checkbox name as parameter?
         diffElementsPageSteps.selectCheckboxes();
 
 //        Assert that for each checkbox there is
 //        an individual log row and value
 //        corresponds to the status of checkbox.
+        // TODO May be it is better send checkbox name as parameter?
         diffElementsPageSteps.assertWaterWindLogRowsTrue();
 
 //        Select radio: Selen
+        // TODO May be it is better send radio button name as parameter?
         diffElementsPageSteps.checkSelen();
 
 //      Assert that for radiobutton there is a log row
@@ -53,15 +57,18 @@ public class Exercise2Steps extends BaseTest {
         diffElementsPageSteps.assertSelenRadioLogRow();
 
 //        Select in dropdown: Yellow
+        // TODO May be it is better send select name as parameter?
         diffElementsPageSteps.selectYellowinDropdown();
 
 //        Assert that for dropdown there is a log row and value
 //        corresponds to the selected value.
+        // TODO May be it is better send checkbox name as parameter?
         diffElementsPageSteps.assertSelenLogRow();
 
 //        Deselect and assert checkboxes: Water, Wind
 //        +
 //        Assert corresponding log rows
+        // TODO May be it is better send checkbox name as parameter?
         diffElementsPageSteps.assertWaterWindLogRowsFalse();
     }
 

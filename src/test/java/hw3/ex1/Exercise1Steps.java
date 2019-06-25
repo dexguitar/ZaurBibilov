@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// TODO Why this class needed?
 public class Exercise1Steps extends BaseTest {
 
     HomePageSteps homePageSteps;
@@ -35,6 +36,7 @@ public class Exercise1Steps extends BaseTest {
         homePageSteps.assertPageElements(images, 4);
 
 //        Assert that there are 4 texts on the Index Page under icons and they have proper text
+        // TODO el -> el.getText() could be replaced to WebElement::getText
         List<String> textContents = hp.getTexts()
                 .stream().map(el -> el.getText()).collect(Collectors.toList());
         List<String> expectedContents = Arrays.asList(

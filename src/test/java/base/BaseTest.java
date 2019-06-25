@@ -1,5 +1,6 @@
 package base;
 
+import hw3.utils.FileUtils;
 import hw3.voids.DiffElementsPage;
 import hw3.voids.HomePage;
 import org.openqa.selenium.By;
@@ -13,6 +14,7 @@ import org.testng.annotations.BeforeSuite;
 
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import static org.testng.Assert.*;
@@ -22,12 +24,14 @@ public class BaseTest {
     protected WebDriver driver;
     protected HomePage hp;
     protected DiffElementsPage dep;
+    protected Properties userInfo;
 
     @BeforeSuite
     public void initialSetUp() {
         System.setProperty("webdriver.chrome.driver",
                 Paths.get("src/test/resources/driver/chromedriver")
                         .toAbsolutePath().toString());
+        userInfo = FileUtils.readUserFromFile("src/test/resources/properties/user.properties");
     }
 
     @BeforeMethod
@@ -36,7 +40,7 @@ public class BaseTest {
         driver.get("https://epam.github.io/JDI");
         hp = PageFactory.initElements(driver, HomePage.class);
         dep = PageFactory.initElements(driver, DiffElementsPage.class);
-        login("epam", "1234");
+        login(userInfo.getProperty("user.name"), userInfo.getProperty("user.password"));
     }
 
     protected void login(String login, String password) {
@@ -74,6 +78,10 @@ public class BaseTest {
         assertFalse(element.isSelected());
     }
 
+    protected void checkSize(List<WebElement> elementList, int size) {
+        assertEquals(elementList.size(), size);
+    }
+
     protected void checkSizeAndContains(List<WebElement> container, List<String> contained,
                                         int size) {
         List<String> actualContents = container.stream()
@@ -81,6 +89,18 @@ public class BaseTest {
 
         assertEquals(container.size(), size);
         assertEquals(actualContents, contained);
+    }
+
+    protected void checkText(WebElement element, String text) {
+        assertEquals(element.getText(), text);
+    }
+
+    protected void checkTextContains(WebElement element, String text) {
+        assertTrue(element.getText().contains(text));
+    }
+
+    protected void clickElement(WebElement element) {
+        element.click();
     }
 
     protected WebElement findCheckbox(String artifact) {

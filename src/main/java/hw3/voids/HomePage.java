@@ -80,8 +80,8 @@ public class HomePage extends BasePage {
 
     public List<String> getServiceDropdownContents() {
         List<String> contents = new ArrayList<>();
-        for (int i = 0; i < serviceDropdownContents.size(); i++) {
-            contents.add(serviceDropdownContents.get(i).getText());
+        for (WebElement element : serviceDropdownContents) {
+            contents.add(element.getText());
         }
         return contents;
     }

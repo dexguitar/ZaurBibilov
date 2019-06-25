@@ -74,7 +74,8 @@ public class Exercise1 extends BaseTest {
         driver.switchTo().defaultContent();
 
 //        Assert a text of the sub header
-        assertEquals(driver.findElement(By.xpath("//h3[@class='text-center']/a")).getText(), "JDI GITHUB");
+        assertEquals(driver.findElement(By.xpath("//h3[@class='text-center']/a"))
+                .getText(), "JDI GITHUB");
 
 //        Assert that JDI GITHUB is a link and has a proper URL
         assertTrue(driver.findElement(By.xpath("//h3[@class='text-center']/a"))

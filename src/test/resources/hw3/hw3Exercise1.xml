@@ -4,7 +4,7 @@
     <test name="HW3 Exercise 1 Suite">
         <classes>
             <class name="hw3.ex1.Exercise1" />
-            <class name="hw3.ex1.Exercise1Steps"></class>
+            <class name="hw3.ex1.Exercise1Steps" />
         </classes>
     </test>
 

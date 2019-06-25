@@ -49,6 +49,7 @@ public class Exercise1Steps extends BaseTest {
                         "some external projects),\n" +
                         "wish to get more…"
         );
+
         homePageSteps.assertTexts(textContents, expectedContents);
 
 //        Assert a text of the main headers

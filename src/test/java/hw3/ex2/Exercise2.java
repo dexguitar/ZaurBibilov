@@ -14,7 +14,7 @@ public class Exercise2 extends BaseTest {
     @Test
     public void differentElementsPageTest() {
 //        Assert Browser title
-        assertEquals(hp.getPageTitle(), "Home Page");
+        checkOpenPageTitle("Home Page");
 
 //        Click on "Service" subcategory in the header
 //        and check that drop down contains options
@@ -28,59 +28,59 @@ public class Exercise2 extends BaseTest {
 
 //        Open through the header menu
 //        Service -> Different Elements Page
-        hp.getDifferentElementsLink().click();
+        clickElement(hp.getDifferentElementsLink());
         assertEquals(dep.getDiffElementsPageUrl(), dep.DIFF_ELEMENTS_PAGE_LINK);
 
 //        Check interface on Different elements page,
 //        it contains all needed elements:
 //        4 checkboxes, 4 radios, 1 dropdown, 2 buttons
-        assertEquals(dep.getCheckboxes().size(), 4);
-        assertEquals(dep.getRadios().size(), 4);
-        assertEquals(dep.getDropdowns().size(), 1);
-        assertEquals(dep.getButtons().size(), 2);
+        checkSize(dep.getCheckboxes(), 4);
+        checkSize(dep.getRadios(), 4);
+        checkSize(dep.getDropdowns(), 1);
+        checkSize(dep.getButtons(), 2);
 
 //        Assert that there is Right Section
-        assertTrue(dep.getRightSection().isDisplayed());
+        checkElementIsDisplayed(dep.getRightSection());
 
 //        Assert that there is Left Section
-        assertTrue(dep.getLeftSection().isDisplayed());
+        checkElementIsDisplayed(dep.getLeftSection());
 
 //        Select checkboxes: Water, Wind
-        dep.getWaterCheckbox().click();
-        dep.getWindCheckbox().click();
-        dep.getWaterCheckbox().isSelected();
-        dep.getWindCheckbox().isSelected();
+        clickElement(dep.getWaterCheckbox());
+        clickElement(dep.getWindCheckbox());
+        checkElementIsSelected(dep.getWaterCheckbox());
+        checkElementIsSelected(dep.getWindCheckbox());
 
 //        Assert that for each checkbox there is an individual log row
 //        and value corresponds to the status of checkbox.
-        assertTrue(dep.getWaterLogRowTrue().isDisplayed());
-        assertTrue(dep.getWindLogRowTrue().isDisplayed());
+        checkElementIsDisplayed(dep.getWaterLogRowTrue());
+        checkElementIsDisplayed(dep.getWindLogRowTrue());
 
 //        Select radio: Selen
-        dep.getSelenCheckbox().click();
+        clickElement(dep.getSelenCheckbox());
 
 //      Assert that for radiobutton there is a log row
 //      and value corresponds to the status of radiobutton.
-        assertTrue(dep.getSelenLogRow().isDisplayed());
+        checkElementIsDisplayed(dep.getSelenLogRow());
 
 //        Select in dropdown: Yellow
-        dep.getYellowDropdownOption().click();
+        clickElement(dep.getYellowDropdownOption());
 
 //        Assert that for dropdown there is a log row and value
 //        corresponds to the selected value.
-        assertTrue(dep.getColorLogRow().isDisplayed());
+        checkElementIsDisplayed(dep.getColorLogRow());
 
 //        Deselect and assert checkboxes: Water, Wind
-        dep.getWaterCheckbox().click();
-        dep.getWindCheckbox().click();
-        assertFalse(dep.getWaterCheckbox().isSelected());
-        assertFalse(dep.getWindCheckbox().isSelected());
+        clickElement(dep.getWaterCheckbox());
+        clickElement(dep.getWindCheckbox());
+        checkElementIsDeSelected(dep.getWaterCheckbox());
+        checkElementIsDeSelected(dep.getWindCheckbox());
 
 //        Assert that for each checkbox there are
 //        an individual log row and value
 //        corresponds to the status of checkbox
-        assertTrue(dep.getWaterLogRowFalse().isDisplayed());
-        assertTrue(dep.getWindLogRowFalse().isDisplayed());
+        checkElementIsDisplayed(dep.getWaterLogRowFalse());
+        checkElementIsDisplayed(dep.getWindLogRowFalse());
     }
 
 }

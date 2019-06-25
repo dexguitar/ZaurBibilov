@@ -1,9 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="HW3 Exercise 1 Suite">
+<suite name="HW3 Exercise 1 Steps">
 
-    <test name="HW3 Exercise 1 Suite">
+    <test name="HW3 Exercise 1 Steps">
         <classes>
-            <class name="hw3.ex1.Exercise1" />
             <class name="hw3.ex1.Exercise1Steps" />
         </classes>
     </test>

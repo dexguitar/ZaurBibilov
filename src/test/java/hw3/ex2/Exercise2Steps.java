@@ -39,37 +39,48 @@ public class Exercise2Steps extends BaseTest {
         diffElementsPageSteps.assertRightAndLeftSections();
 
 //        Select checkboxes: Water, Wind
-        // TODO May be it is better send checkbox name as parameter?
-        diffElementsPageSteps.selectCheckboxes();
+        // TODO May be it is better send
+        //  checkbox name as parameter? => fixed || resolved
+        diffElementsPageSteps.selectCheckbox(dep.getWaterCheckbox());
+        diffElementsPageSteps.selectCheckbox(dep.getWindCheckbox());
 
 //        Assert that for each checkbox there is
 //        an individual log row and value
 //        corresponds to the status of checkbox.
-        // TODO May be it is better send checkbox name as parameter?
-        diffElementsPageSteps.assertWaterWindLogRowsTrue();
+        // TODO May be it is better send
+        //  checkbox name as parameter? => fixed || resolved
+        diffElementsPageSteps.assertLogRowTrue(dep.getWaterLogRowTrue());
+        diffElementsPageSteps.assertLogRowTrue(dep.getWindLogRowTrue());
 
 //        Select radio: Selen
-        // TODO May be it is better send radio button name as parameter?
-        diffElementsPageSteps.checkSelen();
+        // TODO May be it is better send
+        //  radio button name as parameter? => fixed || resolved
+        diffElementsPageSteps.checkRadio(dep.getSelenCheckbox());
 
 //      Assert that for radiobutton there is a log row
 //      and value corresponds to the status of radiobutton.
         diffElementsPageSteps.assertSelenRadioLogRow();
 
 //        Select in dropdown: Yellow
-        // TODO May be it is better send select name as parameter?
-        diffElementsPageSteps.selectYellowinDropdown();
+        // TODO May be it is better send
+        //  select name as parameter? => fixed || resolved
+        diffElementsPageSteps.selectDropdownOption(dep.getYellowDropdownOption());
 
 //        Assert that for dropdown there is a log row and value
 //        corresponds to the selected value.
-        // TODO May be it is better send checkbox name as parameter?
-        diffElementsPageSteps.assertSelenLogRow();
+        // TODO May be it is better send
+        //  checkbox name as parameter? => fixed || resolved
+        diffElementsPageSteps.assertColorLogRow(dep.getColorLogRow());
 
 //        Deselect and assert checkboxes: Water, Wind
-//        +
-//        Assert corresponding log rows
-        // TODO May be it is better send checkbox name as parameter?
-        diffElementsPageSteps.assertWaterWindLogRowsFalse();
+        diffElementsPageSteps.selectCheckbox(dep.getWaterCheckbox());
+        diffElementsPageSteps.selectCheckbox(dep.getWindCheckbox());
+
+//        Assert "Water" and "Wind" log rows
+        // TODO May be it is better send
+        //  checkbox name as parameter? => fixed || resolved
+        diffElementsPageSteps.assertLogRowFalse(dep.getWaterLogRowFalse());
+        diffElementsPageSteps.assertLogRowFalse(dep.getWindLogRowFalse());
     }
 
 }

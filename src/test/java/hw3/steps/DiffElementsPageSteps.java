@@ -11,15 +11,14 @@ import java.util.List;
 
 import static org.testng.Assert.*;
 
-public class DiffElementsPageSteps {
+public class DiffElementsPageSteps extends BaseSteps {
 
-    // TODO Could be extratced to the base class
-    private WebDriver driver;
+    // TODO Could be extratced to the base class => fixed || resolved
     private HomePage hp;
     private DiffElementsPage dep;
 
     public DiffElementsPageSteps(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         dep = new DiffElementsPage(driver);
         hp = new HomePage(driver);
     }
@@ -36,25 +35,17 @@ public class DiffElementsPageSteps {
         link.click();
     }
 
-    public void clickWaterCheckbox() {
-        dep.getWaterCheckbox().click();
-    }
-
-    public void clickWindCheckbox() {
-        dep.getWindCheckbox().click();
-    }
-
     public void assertRightAndLeftSections() {
         assertTrue(dep.getRightSection().isDisplayed());
         assertTrue(dep.getLeftSection().isDisplayed());
     }
 
-    public void checkSelen() {
-        dep.getSelenCheckbox().click();
+    public void checkRadio(WebElement radioButton) {
+        radioButton.click();
     }
 
-    public void selectYellowinDropdown() {
-        dep.getYellowDropdownOption().click();
+    public void selectDropdownOption(WebElement dropdownOption) {
+        dropdownOption.click();
     }
 
     public void assertServiceDropdown() {
@@ -68,14 +59,11 @@ public class DiffElementsPageSteps {
 
     public void assertDiffElementsPageLink() {
         clickElement(hp.getDifferentElementsLink());
-        assertEquals(dep.getDiffElementsPageUrl(), dep.DIFF_ELEMENTS_PAGE_LINK);
+        assertEquals(dep.getDiffElementsPageUrl(), dep.getDiffElementsPageLink());
     }
 
-    public void selectCheckboxes() {
-        clickElement(dep.getWaterCheckbox());
-        clickElement(dep.getWindCheckbox());
-        assertTrue(dep.getWaterCheckbox().isSelected());
-        assertTrue(dep.getWindCheckbox().isSelected());
+    public void selectCheckbox(WebElement checkBox) {
+        clickElement(checkBox);
     }
 
     public void assertBoxesAndButtons() {
@@ -85,24 +73,20 @@ public class DiffElementsPageSteps {
         assertEquals(dep.getButtons().size(), 2);
     }
 
-    public void assertWaterWindLogRowsTrue() {
-        assertTrue(dep.getWaterLogRowTrue().isDisplayed());
-        assertTrue(dep.getWindLogRowTrue().isDisplayed());
+    public void assertLogRowTrue(WebElement logRowTrue) {
+        assertTrue(logRowTrue.isDisplayed());
     }
 
-    public void assertWaterWindLogRowsFalse() {
-        clickWaterCheckbox();
-        clickWindCheckbox();
-        assertTrue(dep.getWaterLogRowFalse().isDisplayed());
-        assertTrue(dep.getWindLogRowFalse().isDisplayed());
+    public void assertLogRowFalse(WebElement logRowFalse) {
+        assertTrue(logRowFalse.isDisplayed());
     }
 
     public void assertSelenRadioLogRow() {
         assertTrue(dep.getSelenLogRow().isDisplayed());
     }
 
-    public void assertSelenLogRow() {
-        assertTrue(dep.getSelenLogRow().isDisplayed());
+    public void assertColorLogRow(WebElement colorLogRow) {
+        assertTrue(colorLogRow.isDisplayed());
     }
 
 }

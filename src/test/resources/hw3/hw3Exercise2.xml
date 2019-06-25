@@ -1,10 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="HW3 Exercise 2 Suite">
+<suite name="HW3 Exercise 2 Steps">
 
-    <test name="HW3 Exercise 2 Suite">
+    <test name="HW3 Exercise 2 Steps">
         <classes>
-            <class name="hw3.ex2.Exercise2" />
-<!--            <class name="hw3.ex2.Exercise2Steps" />-->
+            <class name="hw3.ex2.Exercise2Steps" />
         </classes>
     </test>
 

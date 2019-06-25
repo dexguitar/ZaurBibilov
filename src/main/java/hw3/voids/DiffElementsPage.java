@@ -8,8 +8,8 @@ import java.util.List;
 
 public class DiffElementsPage extends BasePage {
 
-    // TODO Why is public?
-    public static final String DIFF_ELEMENTS_PAGE_LINK = "https://epam.github.io/JDI/different-elements.html";
+    // TODO Why is public? => fixed || resolved
+    private static final String DIFF_ELEMENTS_PAGE_LINK = "https://epam.github.io/JDI/different-elements.html";
 
     @FindBy(xpath = "//*[@type='checkbox']")
     private List<WebElement> checkboxes;
@@ -71,6 +71,10 @@ public class DiffElementsPage extends BasePage {
 
     public String getDiffElementsPageUrl() {
         return driver.getCurrentUrl();
+    }
+
+    public String getDiffElementsPageLink() {
+        return DIFF_ELEMENTS_PAGE_LINK;
     }
 
     public List<WebElement> getCheckboxes() {

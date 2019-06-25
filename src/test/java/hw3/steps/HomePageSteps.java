@@ -12,14 +12,13 @@ import java.util.stream.Stream;
 
 import static org.testng.Assert.*;
 
-public class HomePageSteps {
+public class HomePageSteps extends BaseSteps {
 
-    // TODO Could be extratced to the base class
-    private WebDriver driver;
+    // TODO Could be extratced to the base class => fixed || resolved
     private HomePage hp;
 
     public HomePageSteps(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         hp = new HomePage(driver);
     }
 
@@ -44,7 +43,9 @@ public class HomePageSteps {
     }
 
     public void assertHeaderSectionItems(List<String> expectedHeaderMenuText, int size) {
-        // TODO el -> el.getName() cpuld be replaced to WebElement::getText
+        // TODO el -> el.getName() could be
+        //  replaced to WebElement::getText =>
+        //  it couldn't, I'm iterating over an enum
         List<String> actualTopMenuElements = Stream.of(TopMenu.values())
                 .map(el -> el.getName()).collect(Collectors.toList());
 

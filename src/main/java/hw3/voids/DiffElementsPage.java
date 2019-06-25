@@ -8,6 +8,7 @@ import java.util.List;
 
 public class DiffElementsPage extends BasePage {
 
+    // TODO Why is public?
     public static final String DIFF_ELEMENTS_PAGE_LINK = "https://epam.github.io/JDI/different-elements.html";
 
     @FindBy(xpath = "//*[@type='checkbox']")

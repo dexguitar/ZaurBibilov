@@ -11,6 +11,7 @@ public class HomePage extends BasePage {
 
     public static final String JDI_LINK_URL = "https://github.com/epam/JDI";
 
+    // TODO What is this field for?
     public List<String> providedServiceDropdownElements = new ArrayList<>();
 
     @FindBy(id = "user-icon")

@@ -14,6 +14,7 @@ import static org.testng.Assert.*;
 
 public class HomePageSteps {
 
+    // TODO Could be extratced to the base class
     private WebDriver driver;
     private HomePage hp;
 
@@ -43,6 +44,7 @@ public class HomePageSteps {
     }
 
     public void assertHeaderSectionItems(List<String> expectedHeaderMenuText, int size) {
+        // TODO el -> el.getName() cpuld be replaced to WebElement::getText
         List<String> actualTopMenuElements = Stream.of(TopMenu.values())
                 .map(el -> el.getName()).collect(Collectors.toList());
 

@@ -10,6 +10,7 @@ import java.util.List;
 import static org.testng.Assert.*;
 
 public class Exercise2 extends BaseTest {
+    // TODO What is this class for?
 
     @Test
     public void differentElementsPageTest() {

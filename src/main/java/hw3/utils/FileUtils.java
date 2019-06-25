@@ -6,6 +6,7 @@ import java.util.Properties;
 
 public class FileUtils {
 
+    // TODO Method is unused
     public static Properties readUserFromFile(String filePath) {
         Properties prop = new Properties();
 

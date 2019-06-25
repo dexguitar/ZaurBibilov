@@ -15,6 +15,7 @@ import static org.testng.Assert.*;
 
 public class Exercise1 extends BaseTest {
 
+    // TODO What is this class for?
     @Test
     public void homePageContentTest() {
 //        Assert Browser title

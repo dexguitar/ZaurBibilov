@@ -30,7 +30,7 @@ public class Example1 {
         $("#password").sendKeys("1234");
         $(By.xpath("//button[@id='login-button']")).click();
 
-        $("#user-name").shouldHave(text("PITER CHAILOVSKII1"));
+        $("#user-name").shouldHave(text("PITER CHAILOVSKII"));
 
         // How to get Selenium WebDriver
 //        WebElement wrappedElement = $("").getWrappedElement();

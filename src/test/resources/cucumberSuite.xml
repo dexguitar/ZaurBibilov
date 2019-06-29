@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cucumber suite">
+
+    <test name="Cucumber suite">
+        <classes>
+            <class name="lesson6.RunAcceptanceIT"/>
+        </classes>
+    </test>
+
+</suite>

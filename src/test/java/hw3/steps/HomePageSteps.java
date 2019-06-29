@@ -47,7 +47,7 @@ public class HomePageSteps extends BaseSteps {
         //  replaced to WebElement::getText =>
         //  it couldn't, I'm iterating over an enum
         List<String> actualTopMenuElements = Stream.of(TopMenu.values())
-                .map(el -> el.getName()).collect(Collectors.toList());
+                .map(TopMenu::getName).collect(Collectors.toList());
 
         assertEquals(hp.getMenuItems().size(), size);
         assertEquals(actualTopMenuElements, expectedHeaderMenuText);

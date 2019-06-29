@@ -31,7 +31,8 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver",
                 Paths.get("src/test/resources/driver/chromedriver")
                         .toAbsolutePath().toString());
-        userInfo = FileUtils.readUserFromFile("src/test/resources/properties/user.properties");
+        userInfo = FileUtils.readUserFromFile
+                ("src/test/resources/properties/user.properties");
     }
 
     @BeforeMethod

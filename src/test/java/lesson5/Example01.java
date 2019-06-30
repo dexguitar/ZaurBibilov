@@ -20,17 +20,6 @@ public class Example01 extends BaseTest {
     }
 
     @Test
-    public void simpleStepTest() {
-        HomePage hp = PageFactory.initElements(driver, HomePage.class);
-        hp.login("epam", "1234");
-
-        contactFormPageSteps.goToContactFormPage();
-        contactFormPageSteps.fillContactFormData("Male", "Some name");
-
-        // assert
-    }
-
-    @Test
     public void simpleTest() {
         HomePage hp = PageFactory.initElements(driver, HomePage.class);
         hp.login("epam", "1234");
@@ -39,7 +28,7 @@ public class Example01 extends BaseTest {
         contactFormPageSteps.fillContactFormData("Male", "Some name");
 
         // assert
-        contactFormPageSteps.checkUserName("PITER CHAILOVSKII");
+        contactFormPageSteps.checkUserName("PITER CHAILOVSKII1");
     }
 
     @Test(testName = "Failed Test")
@@ -50,7 +39,7 @@ public class Example01 extends BaseTest {
         contactFormPageSteps.goToContactFormPage();
 
         // assert
-        contactFormPageSteps.checkUserName("PITER CHAILOVSKII");
+        contactFormPageSteps.checkUserName("PITER CHAILOVSKII1");
 
         contactFormPageSteps.fillContactFormData("Male", "Some name");
 

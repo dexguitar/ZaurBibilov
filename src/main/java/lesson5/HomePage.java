@@ -15,7 +15,7 @@ public class HomePage extends BasePage {
 
     private WebElement password;
 
-    @FindBy(xpath = "//button[@id='login-button']")
+    @FindBy(id = "login-button")
     private WebElement loginButton;
 
     public HomePage(WebDriver driver) {

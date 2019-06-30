@@ -17,8 +17,4 @@ public abstract class BasePage {
     public void clickLeftSideMenu(LeftSideMenu menuItem) {
         driver.findElement(By.linkText(menuItem.getName())).click();
     }
-
-    public String getPageTitle() {
-        return driver.getTitle();
-    }
 }

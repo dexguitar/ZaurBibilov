@@ -22,7 +22,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    @Step("Login as user: {0}")
+    @Step("Login as user: '{0}'")
     public void login(String userName, String password) {
         userIcon.click();
         loginNameTextField.sendKeys(userName);

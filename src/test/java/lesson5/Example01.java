@@ -30,29 +30,29 @@ public class Example01 extends BaseTest {
         // assert
     }
 
-    @Test
-    public void simpleTest() {
-        HomePage hp = PageFactory.initElements(driver, HomePage.class);
-        hp.login("epam", "1234");
-
-        contactFormPageSteps.goToContactFormPage();
-        contactFormPageSteps.fillContactFormData("Male", "Some name");
-
-        // assert
-        contactFormPageSteps.checkUserName("PITER CHAILOVSKII1");
-    }
-
-    @Test(testName = "Failed Test")
-    public void simpleTest1() {
-        HomePage hp = PageFactory.initElements(driver, HomePage.class);
-        hp.login("epam", "1234");
-
-        contactFormPageSteps.goToContactFormPage();
-
-        // assert
-        contactFormPageSteps.checkUserName("PITER CHAILOVSKII1");
-
-        contactFormPageSteps.fillContactFormData("Male", "Some name");
-
-    }
+//    @Test
+//    public void simpleTest() {
+//        HomePage hp = PageFactory.initElements(driver, HomePage.class);
+//        hp.login("epam", "1234");
+//
+//        contactFormPageSteps.goToContactFormPage();
+//        contactFormPageSteps.fillContactFormData("Male", "Some name");
+//
+//        // assert
+//        contactFormPageSteps.checkUserName("PITER CHAILOVSKII1");
+//    }
+//
+//    @Test(testName = "Failed Test")
+//    public void simpleTest1() {
+//        HomePage hp = PageFactory.initElements(driver, HomePage.class);
+//        hp.login("epam", "1234");
+//
+//        contactFormPageSteps.goToContactFormPage();
+//
+//        // assert
+//        contactFormPageSteps.checkUserName("PITER CHAILOVSKII1");
+//
+//        contactFormPageSteps.fillContactFormData("Male", "Some name");
+//
+//    }
 }

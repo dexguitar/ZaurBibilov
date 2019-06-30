@@ -28,7 +28,7 @@ public class Example01 extends BaseTest {
         contactFormPageSteps.fillContactFormData("Male", "Some name");
 
         // assert
-        contactFormPageSteps.checkUserName("PITER CHAILOVSKII1");
+        contactFormPageSteps.checkUserName("PITER CHAILOVSKII");
     }
 
     @Test(testName = "Failed Test")

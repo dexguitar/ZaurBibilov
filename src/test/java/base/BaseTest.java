@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -52,7 +53,8 @@ public class BaseTest {
         checkOpenPageTitle("Home Page");
 
 //        Perform login
-        driver.findElement(By.xpath("//*[@id='user-icon']")).click();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(By.xpath("//*[@id='user-icon']"))).click();
         driver.findElement(By.cssSelector("#name")).sendKeys(login);
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
         driver.findElement(By.xpath("//button[@id='login-button']")).click();

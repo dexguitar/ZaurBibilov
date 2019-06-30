@@ -46,7 +46,7 @@
         <profile>
             <id>test-selenium</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/testSelenium.xml</suite.xml>
@@ -56,7 +56,7 @@
         <profile>
             <id>hw2Exercise1</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/hw2/hw2exercise1.xml</suite.xml>

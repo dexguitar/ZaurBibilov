@@ -52,7 +52,7 @@ public class BaseTest {
         checkOpenPageTitle("Home Page");
 
 //        Perform login
-        driver.findElement(By.id("user-icon")).click();
+        driver.findElement(By.xpath("//*[@id='user-icon']")).click();
         driver.findElement(By.cssSelector("#name")).sendKeys(login);
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
         driver.findElement(By.xpath("//button[@id='login-button']")).click();

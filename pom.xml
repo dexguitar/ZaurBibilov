@@ -46,7 +46,7 @@
         <profile>
             <id>test-selenium</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>src/test/resources/testSelenium.xml</suite.xml>

@@ -55,9 +55,9 @@ public class BaseTest {
 //        Perform login
         Actions actions = new Actions(driver);
         actions.moveToElement(driver.findElement(By.xpath("//*[@id='user-icon']"))).click();
-        driver.findElement(By.cssSelector("#name")).sendKeys(login);
-        driver.findElement(By.cssSelector("#password")).sendKeys(password);
-        driver.findElement(By.xpath("//button[@id='login-button']")).click();
+        actions.moveToElement(driver.findElement(By.cssSelector("#name"))).sendKeys(login);
+        actions.moveToElement(driver.findElement(By.cssSelector("#password"))).sendKeys(password);
+        actions.moveToElement(driver.findElement(By.xpath("//button[@id='login-button']"))).click();
 
 //        Assert User name in the left-top side of screen that user is logged in
         assertEquals(driver.findElement(By.id("user-name"))

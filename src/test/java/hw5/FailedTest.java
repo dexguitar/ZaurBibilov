@@ -4,7 +4,6 @@ import base.BaseTest;
 import hw3.steps.HomePageSteps;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import lesson5.AllureAttachmentListener;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -28,7 +27,7 @@ public class FailedTest extends BaseTest {
         homePageSteps = new HomePageSteps(driver);
     }
 
-    @Test(testName = "Failed Test")
+    @Test(testName = "failed")
     public void homePageTest() {
 //        Assert page title
         homePageSteps.assertPageTitle("Home Page");

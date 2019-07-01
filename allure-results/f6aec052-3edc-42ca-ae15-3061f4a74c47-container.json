@@ -1,1 +1,0 @@
-{"uuid":"f6aec052-3edc-42ca-ae15-3061f4a74c47","name":"HW5 suite","children":["b40cb999-0907-48a1-8c78-3aeb2a9fab6a"],"befores":[{"name":"initialSetUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1561974927596,"stop":1561974928096}],"afters":[],"links":[],"start":1561974927571,"stop":1561974940212}

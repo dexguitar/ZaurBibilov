@@ -19,6 +19,7 @@ public class MetalsAndColorsPage extends BasePage {
     private SelenideElement elementSelector = $(By.xpath("//*[@id='elements-checklist']"));
 
     //    Rows
+    // TODO Why dou you use $(By.cssSelector("")) instead of $("")
     private SelenideElement summaryRow = $(By.cssSelector(".summ-res"));
     private SelenideElement elementsRow = $(By.cssSelector(".elem-res"));
     private SelenideElement colorRow = $(By.cssSelector(".col-res"));

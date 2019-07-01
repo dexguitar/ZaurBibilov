@@ -68,7 +68,7 @@ public class BaseTest {
         nameField.sendKeys(login);
         WebElement passField = driver.findElement(By.id("password"));
         passField.sendKeys(password);
-        WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='login-button']")));
+        WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='login-button']/span")));
         actions.moveToElement(loginButton).click().build().perform();
 
 //        Assert User name in the left-top side of screen that user is logged in

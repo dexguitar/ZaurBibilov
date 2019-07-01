@@ -5,7 +5,6 @@ import hw3.voids.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lesson5.TestProvider;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -56,13 +55,10 @@ public class BaseTest {
         checkOpenPageTitle("Home Page");
 
 //        Perform login
-        WebElement userIcon = driver.findElement(By.xpath("//*[@id='user-icon']"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click()", userIcon);
+        driver.findElement(By.xpath("//*[@id='user-icon']")).click();
         driver.findElement(By.cssSelector("#name")).sendKeys(login);
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
-        WebElement loginButton = driver.findElement(By.xpath("//button[@id='login-button']"));
-        js.executeScript("arguments[0].click()", loginButton);
+        driver.findElement(By.xpath("//button[@id='login-button']")).click();
 
 //        Assert User name in the left-top side of screen that user is logged in
         assertEquals(driver.findElement(By.id("user-name"))
@@ -84,10 +80,6 @@ public class BaseTest {
 
     protected void checkElementIsDeSelected(WebElement element) {
         assertFalse(element.isSelected());
-    }
-
-    protected void checkSize(List<WebElement> elementList, int size) {
-        assertEquals(elementList.size(), size);
     }
 
     protected void checkSizeAndContains(List<WebElement> container, List<String> contained,

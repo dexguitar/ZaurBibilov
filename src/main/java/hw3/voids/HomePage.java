@@ -11,8 +11,6 @@ public class HomePage extends BasePage {
 
     public static final String JDI_LINK_URL = "https://github.com/epam/JDI";
 
-    // TODO What is this field for? => fixed || resolved
-
     @FindBy(id = "user-icon")
     private WebElement userIcon;
 

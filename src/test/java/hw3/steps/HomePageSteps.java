@@ -14,7 +14,6 @@ import static org.testng.Assert.*;
 
 public class HomePageSteps extends BaseSteps {
 
-    // TODO Could be extratced to the base class => fixed || resolved
     private HomePage hp;
 
     public HomePageSteps(WebDriver driver) {
@@ -43,9 +42,6 @@ public class HomePageSteps extends BaseSteps {
     }
 
     public void assertHeaderSectionItems(List<String> expectedHeaderMenuText, int size) {
-        // TODO el -> el.getName() could be
-        //  replaced to WebElement::getText =>
-        //  it couldn't, I'm iterating over an enum
         List<String> actualTopMenuElements = Stream.of(TopMenu.values())
                 .map(TopMenu::getName).collect(Collectors.toList());
 

@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,7 +47,7 @@ public class BaseTest {
         driver.get("https://epam.github.io/JDI");
         hp = PageFactory.initElements(driver, HomePage.class);
         dep = PageFactory.initElements(driver, DiffElementsPage.class);
-//        login("epam", "1234");
+        login("epam", "1234");
     }
 
     protected void login(String login, String password) {
@@ -58,16 +59,17 @@ public class BaseTest {
 
 //        Perform login
         WebDriverWait wait = new WebDriverWait(driver, 10);
+        Actions actions = new Actions(driver);
         WebElement userIcon = wait.until(ExpectedConditions.elementToBeClickable(By.id("user-icon")));
-        userIcon.click();
+        actions.moveToElement(userIcon).click();
         WebElement nameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name")));
-        nameField.sendKeys(login);
+        actions.moveToElement(nameField).sendKeys(login);
         WebElement passField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
-        passField.sendKeys(password);
+        actions.moveToElement(passField).sendKeys(password);
 //        driver.findElement(By.id("name")).sendKeys(login);
 //        driver.findElement(By.id("password")).sendKeys(password);
         WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("login-button")));
-        loginButton.click();
+        actions.moveToElement(loginButton).click();
 
 //        Assert User name in the left-top side of screen that user is logged in
         assertEquals(driver.findElement(By.id("user-name"))

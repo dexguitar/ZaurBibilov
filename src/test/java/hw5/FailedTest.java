@@ -27,7 +27,7 @@ public class FailedTest extends BaseTest {
         homePageSteps = new HomePageSteps(driver);
     }
 
-    @Test(testName = "failed")
+    @Test(testName = "Failed test")
     public void homePageTest() {
 //        Assert page title
         homePageSteps.assertPageTitle("Home Page");

@@ -10,7 +10,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -60,14 +63,17 @@ public class BaseTest {
         checkOpenPageTitle("Home Page");
 
 //        Perform login
-        WebElement userIcon = driver.findElement(By.id("user-icon"));
-        js.executeScript("arguments[0].click();", userIcon);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        Actions actions = new Actions(driver);
+        WebElement userIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-icon")));
+        actions.moveToElement(userIcon).click().build().perform();
         WebElement nameField = driver.findElement(By.id("name"));
         nameField.sendKeys(login);
         WebElement passField = driver.findElement(By.id("password"));
         passField.sendKeys(password);
-        WebElement loginButton = driver.findElement(By.xpath("//*[@id='login-button']"));
-        js.executeScript("arguments[0].click();", loginButton);
+        WebElement loginButton = wait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='login-button']")));
+        actions.moveToElement(loginButton).click().build().perform();
 
 //        Assert User name in the left-top side of screen that user is logged in
         assertEquals(driver.findElement(By.id("user-name"))

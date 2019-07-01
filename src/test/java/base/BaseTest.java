@@ -1,8 +1,9 @@
 package base;
 
-import hw3.utils.FileUtils;
 import hw3.voids.DiffElementsPage;
 import hw3.voids.HomePage;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import lesson5.TestProvider;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +13,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -28,20 +28,22 @@ public class BaseTest {
 
     @BeforeSuite
     public void initialSetUp() {
-        System.setProperty("webdriver.chrome.driver",
-                Paths.get("src/test/resources/driver/chromedriver")
-                        .toAbsolutePath().toString());
-        userInfo = FileUtils.readUserFromFile
-                ("src/test/resources/properties/user.properties");
+//        System.setProperty("webdriver.chrome.driver",
+//                Paths.get("src/test/resources/driver/chromedriver")
+//                        .toAbsolutePath().toString());
+        WebDriverManager.chromedriver().setup();
+//        userInfo = FileUtils.readUserFromFile
+//                ("src/test/resources/properties/user.properties");
     }
 
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
+        TestProvider.getInstance().setDriver(driver);
         driver.get("https://epam.github.io/JDI");
         hp = PageFactory.initElements(driver, HomePage.class);
         dep = PageFactory.initElements(driver, DiffElementsPage.class);
-        login(userInfo.getProperty("user.name"), userInfo.getProperty("user.password"));
+        login("epam", "1234");
     }
 
     protected void login(String login, String password) {

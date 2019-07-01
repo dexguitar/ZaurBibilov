@@ -2,14 +2,17 @@ package hw5;
 
 import base.BaseTest;
 import hw3.steps.HomePageSteps;
+import lesson5.AllureAttachmentListener;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Listeners(AllureAttachmentListener.class)
 public class FailedTest extends BaseTest {
 
     HomePageSteps homePageSteps;

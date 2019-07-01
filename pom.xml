@@ -119,7 +119,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/hw5.xml</suite.xml>
+                <suite.xml>src/test/resources/hw5/hw5.xml</suite.xml>
             </properties>
         </profile>
 

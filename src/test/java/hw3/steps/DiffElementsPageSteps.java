@@ -14,7 +14,6 @@ import static org.testng.Assert.*;
 
 public class DiffElementsPageSteps extends BaseSteps {
 
-    // TODO Could be extratced to the base class => fixed || resolved
     private HomePage hp;
     private DiffElementsPage dep;
 

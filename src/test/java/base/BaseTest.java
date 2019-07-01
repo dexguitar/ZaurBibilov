@@ -41,8 +41,8 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
         TestProvider.getInstance().setDriver(driver);
+        driver.manage().window().maximize();
         driver.get("https://epam.github.io/JDI");
         hp = PageFactory.initElements(driver, HomePage.class);
         dep = PageFactory.initElements(driver, DiffElementsPage.class);

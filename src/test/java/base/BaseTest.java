@@ -1,5 +1,6 @@
 package base;
 
+import hw3.utils.FileUtils;
 import hw3.voids.DiffElementsPage;
 import hw3.voids.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -34,8 +33,8 @@ public class BaseTest {
 //                Paths.get("src/test/resources/driver/chromedriver")
 //                        .toAbsolutePath().toString());
         WebDriverManager.chromedriver().setup();
-//        userInfo = FileUtils.readUserFromFile
-//                ("src/test/resources/properties/user.properties");
+        userInfo = FileUtils.readUserFromFile
+                ("src/test/resources/properties/user.properties");
     }
 
     @BeforeMethod
@@ -57,16 +56,13 @@ public class BaseTest {
         checkOpenPageTitle("Home Page");
 
 //        Perform login
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement userIcon = wait.until(ExpectedConditions.elementToBeClickable(By.id("user-icon")));
+        WebElement userIcon = driver.findElement(By.id("user-icon"));
         userIcon.click();
-        WebElement nameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name")));
+        WebElement nameField = driver.findElement(By.id("name"));
         nameField.sendKeys(login);
-        WebElement passField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
+        WebElement passField = driver.findElement(By.id("password"));
         passField.sendKeys(password);
-//        driver.findElement(By.id("name")).sendKeys(login);
-//        driver.findElement(By.id("password")).sendKeys(password);
-        WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("login-button")));
+        WebElement loginButton = driver.findElement(By.id("login-button"));
         loginButton.click();
 
 //        Assert User name in the left-top side of screen that user is logged in

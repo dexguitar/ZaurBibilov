@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -55,10 +57,12 @@ public class BaseTest {
         checkOpenPageTitle("Home Page");
 
 //        Perform login
-        driver.findElement(By.xpath("//*[@id='user-icon']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement userIcon = wait.until(ExpectedConditions.elementToBeClickable(By.id("user-icon")));
         driver.findElement(By.cssSelector("#name")).sendKeys(login);
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
-        driver.findElement(By.xpath("//button[@id='login-button']")).click();
+        WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("login-button")));
+        loginButton.click();
 
 //        Assert User name in the left-top side of screen that user is logged in
         assertEquals(driver.findElement(By.id("user-name"))

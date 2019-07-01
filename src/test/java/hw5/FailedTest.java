@@ -3,6 +3,7 @@ package hw5;
 import base.BaseTest;
 import hw3.steps.HomePageSteps;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import lesson5.AllureAttachmentListener;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Listeners(AllureAttachmentListener.class)
-@Feature("")
+@Feature("Epam site test")
+@Story(value = "Home Page Failed Test")
 public class FailedTest extends BaseTest {
 
     HomePageSteps homePageSteps;

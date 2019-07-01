@@ -6,7 +6,6 @@ import hw3.voids.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lesson5.TestProvider;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -53,8 +52,6 @@ public class BaseTest {
     }
 
     protected void login(String login, String password) {
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
 
 //        Open test site by URL
         assertEquals(driver.getCurrentUrl(), "https://epam.github.io/JDI/index.html");

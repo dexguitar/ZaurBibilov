@@ -1,6 +1,7 @@
 package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lesson5.TestProvider;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -24,6 +25,7 @@ public class BaseLessonTest {
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
+        TestProvider.getInstance().setDriver(driver);
         driver.get("https://epam.github.io/JDI");
     }
 

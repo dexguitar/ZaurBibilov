@@ -3,6 +3,7 @@ package hw3.steps;
 import hw3.enums.TopMenu;
 import hw3.voids.DiffElementsPage;
 import hw3.voids.HomePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -27,6 +28,7 @@ public class DiffElementsPageSteps extends BaseSteps {
         dep.clickTopMenu(item);
     }
 
+    @Step("Assert Browser title")
     public void assertPageTitle(String title) {
         assertEquals(dep.getPageTitle(), title);
     }
@@ -35,6 +37,7 @@ public class DiffElementsPageSteps extends BaseSteps {
         link.click();
     }
 
+    @Step("Assert that there is Right and Left sections")
     public void assertRightAndLeftSections() {
         assertTrue(dep.getRightSection().isDisplayed());
         assertTrue(dep.getLeftSection().isDisplayed());
@@ -48,6 +51,12 @@ public class DiffElementsPageSteps extends BaseSteps {
         dropdownOption.click();
     }
 
+    @Step("Select in dropdown: 'Yellow'")
+    public void selectYellowInDropdown() {
+        selectDropdownOption(dep.getYellowDropdownOption());
+    }
+
+    @Step("Click on 'Service' subcategory in the header and check that drop down contains options")
     public void assertServiceDropdown() {
         clickTopMenuItem(TopMenu.SERVICE);
         List<String> expectedServiceDropdownContents = Arrays
@@ -57,6 +66,7 @@ public class DiffElementsPageSteps extends BaseSteps {
         assertTrue(hp.getServiceDropdownContents().containsAll(expectedServiceDropdownContents));
     }
 
+    @Step("Open through the header menu: 'Service' -> 'Different Elements Page'")
     public void assertDiffElementsPageLink() {
         clickElement(hp.getDifferentElementsLink());
         assertEquals(dep.getDiffElementsPageUrl(), dep.getDiffElementsPageLink());
@@ -66,6 +76,25 @@ public class DiffElementsPageSteps extends BaseSteps {
         clickElement(checkBox);
     }
 
+    @Step("Select checkboxes: Water, Wind and assert respective log rows")
+    public void selectWaterWindCheckboxesAndAssertRespectiveLogRows() {
+        selectCheckbox(dep.getWaterCheckbox());
+        selectCheckbox(dep.getWindCheckbox());
+        assertLogRowTrue(dep.getWaterLogRowTrue());
+        assertLogRowTrue(dep.getWindLogRowTrue());
+    }
+
+    @Step("Deselect checkboxes: Water, Wind and assert respective log rows")
+    public void deselectWaterWindCheckboxesAndAssertRespectiveLogRows() {
+        selectCheckbox(dep.getWaterCheckbox());
+        selectCheckbox(dep.getWindCheckbox());
+        assertLogRowFalse(dep.getWaterLogRowFalse());
+        assertLogRowFalse(dep.getWindLogRowFalse());
+    }
+
+    @Step("Check interface on Different elements page," +
+            "it contains all needed elements:" +
+            "4 checkboxes, 4 radios, 1 dropdown, 2 buttons")
     public void assertBoxesAndButtons() {
         assertEquals(dep.getCheckboxes().size(), 4);
         assertEquals(dep.getRadios().size(), 4);
@@ -81,12 +110,19 @@ public class DiffElementsPageSteps extends BaseSteps {
         assertTrue(logRowFalse.isDisplayed());
     }
 
+    @Step("Assert Selen Radio Log Row")
     public void assertSelenRadioLogRow() {
         assertTrue(dep.getSelenLogRow().isDisplayed());
     }
 
+    @Step("Assert color log row")
     public void assertColorLogRow(WebElement colorLogRow) {
         assertTrue(colorLogRow.isDisplayed());
+    }
+
+    @Step("Select radio: Selen")
+    public void checkSelenRadio() {
+        checkRadio(dep.getSelenCheckbox());
     }
 
 }

@@ -59,8 +59,8 @@ public class BaseTest {
 //        Perform login
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement userIcon = wait.until(ExpectedConditions.elementToBeClickable(By.id("user-icon")));
-        driver.findElement(By.cssSelector("#name")).sendKeys(login);
-        driver.findElement(By.cssSelector("#password")).sendKeys(password);
+        driver.findElement(By.id("name")).sendKeys(login);
+        driver.findElement(By.id("password")).sendKeys(password);
         WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("login-button")));
         loginButton.click();
 

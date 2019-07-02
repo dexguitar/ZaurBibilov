@@ -41,11 +41,10 @@ public class BaseTest {
     public void setUp() {
         driver = new ChromeDriver();
         TestProvider.getInstance().setDriver(driver);
-        driver.manage().window().maximize();
         driver.get("https://epam.github.io/JDI");
         hp = PageFactory.initElements(driver, HomePage.class);
         dep = PageFactory.initElements(driver, DiffElementsPage.class);
-        login("epam", "1234");
+        login(userInfo.getProperty("user.name"), userInfo.getProperty("user.password"));
     }
 
     protected void login(String login, String password) {

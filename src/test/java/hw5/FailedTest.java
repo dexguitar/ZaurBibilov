@@ -35,7 +35,7 @@ public class FailedTest extends BaseTest {
 
 //        Assert that there are 4 items on the header section are displayed and they have proper texts
         List<String> expectedHeaderItems = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
-        homePageSteps.assertHeaderSectionItems(expectedHeaderItems, 4);
+        homePageSteps.assertHeaderSectionItems(expectedHeaderItems, 3);
 
 //        Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> images = hp.getImages();

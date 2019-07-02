@@ -48,7 +48,7 @@ public class BaseTest {
         driver.get("https://epam.github.io/JDI");
         hp = PageFactory.initElements(driver, HomePage.class);
         dep = PageFactory.initElements(driver, DiffElementsPage.class);
-        login("epam", "1234");
+//        login("epam", "1234");
     }
 
     protected void login(String login, String password) {

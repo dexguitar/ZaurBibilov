@@ -51,7 +51,6 @@ public class SelenideBaseTest {
         $(By.xpath("//button[@id='login-button']")).click();
 
 //        Assert User name in the top-right corner of the screen
-        // TODO Could be used static import
         $("#user-name").shouldBe(Condition.text("PITER CHAILOVSKII"));
     }
 

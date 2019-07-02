@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class BasePage {
 
+    // TODO Coudle be used Selenide.title()
     private SelenideElement pageTitle = $("title");
 
     public SelenideElement getPageTitle() {

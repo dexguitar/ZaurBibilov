@@ -67,7 +67,7 @@ public class BaseTest {
 //        nameField.sendKeys(login);
 //        WebElement passField = driver.findElement(By.id("password"));
 //        passField.sendKeys(password);
-        WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='login-button']/span")));
+        WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-button")));
 //        actions.moveToElement(loginButton).click().build().perform();
         WebElement userIcon = driver.findElement(By.id("user-icon"));
         actions.moveToElement(userIcon).click().build().perform();

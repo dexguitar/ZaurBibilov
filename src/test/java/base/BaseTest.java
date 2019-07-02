@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -57,9 +59,9 @@ public class BaseTest {
         checkOpenPageTitle("Home Page");
 
 //        Perform login
-//        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
 //        Actions actions = new Actions(driver);
-//        WebElement userIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-icon")));
+        WebElement userIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-icon")));
 //        actions.moveToElement(userIcon).click().build().perform();
 //        WebElement nameField = driver.findElement(By.id("name"));
 //        nameField.sendKeys(login);
@@ -67,7 +69,7 @@ public class BaseTest {
 //        passField.sendKeys(password);
 //        WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='login-button']/span")));
 //        actions.moveToElement(loginButton).click().build().perform();
-        WebElement userIcon = driver.findElement(By.id("user-icon"));
+//        WebElement userIcon = driver.findElement(By.id("user-icon"));
         userIcon.click();
         WebElement nameField = driver.findElement(By.id("name"));
         nameField.sendKeys(login);

@@ -19,12 +19,12 @@ public class MetalsAndColorsPage extends BasePage {
     private SelenideElement elementSelector = $(By.xpath("//*[@id='elements-checklist']"));
 
     //    Rows
-    // TODO Why dou you use $(By.cssSelector("")) instead of $("")
-    private SelenideElement summaryRow = $(By.cssSelector(".summ-res"));
-    private SelenideElement elementsRow = $(By.cssSelector(".elem-res"));
-    private SelenideElement colorRow = $(By.cssSelector(".col-res"));
-    private SelenideElement metalRow = $(By.cssSelector(".met-res"));
-    private SelenideElement vegetableRow = $(By.cssSelector(".sal-res"));
+    // TODO Why dou you use $(By.cssSelector("")) instead of $("") => fixed || resolved
+    private SelenideElement summaryRow = $(".summ-res");
+    private SelenideElement elementsRow = $(".elem-res");
+    private SelenideElement colorRow = $(".col-res");
+    private SelenideElement metalRow = $(".met-res");
+    private SelenideElement vegetableRow = $(".sal-res");
 
     //    Submit button
     private SelenideElement submitBtn = $("#submit-button");

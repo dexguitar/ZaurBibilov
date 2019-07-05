@@ -98,18 +98,6 @@ public class BaseTest {
         assertEquals(actualContents, contained);
     }
 
-    protected void checkText(WebElement element, String text) {
-        assertEquals(element.getText(), text);
-    }
-
-    protected void checkTextContains(WebElement element, String text) {
-        assertTrue(element.getText().contains(text));
-    }
-
-    protected void clickElement(WebElement element) {
-        element.click();
-    }
-
     protected WebElement findCheckbox(String artifact) {
         return driver.findElement(By.xpath("//*[@class='label-checkbox' and contains(., '"
                 + artifact + "')]//input"));

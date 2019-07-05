@@ -1,7 +1,7 @@
-package lesson6.steps;
+package hw6.steps;
 
 import cucumber.api.java.en.Given;
-import lesson6.hooks.TestContext;
+import hw6.hooks.TestContext;
 
 public class GivenSteps extends BaseStep {
 

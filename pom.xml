@@ -123,6 +123,16 @@
             </properties>
         </profile>
 
+        <profile>
+            <id>hwCucumber</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>src/test/resources/hw6/hwCucumber.xml</suite.xml>
+            </properties>
+        </profile>
+
     </profiles>
 
     <dependencies>
@@ -218,6 +228,15 @@
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Cucumber Java -->
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 

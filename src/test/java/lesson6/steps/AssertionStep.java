@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class AssertionSteps extends BaseSteps {
+public class AssertionStep extends BaseStep {
 
     @Then("User name should be '(.+)'")
     public void userNameShouldBe(String expectedUsername) {

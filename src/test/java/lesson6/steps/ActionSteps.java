@@ -1,14 +1,10 @@
 package lesson6.steps;
 
 import cucumber.api.java.en.When;
-import lesson6.entities.User;
-import lesson6.enums.HeaderMenu;
 import lesson6.hooks.TestContext;
 import org.openqa.selenium.By;
 
-import java.util.List;
-
-public class ActionSteps extends BaseSteps {
+public class ActionSteps extends BaseStep {
 
     @When("I login as '([^\"]*)'/'([^\"]*)'")
     public void iLoginAs(String username, String password) {
@@ -18,22 +14,6 @@ public class ActionSteps extends BaseSteps {
         TestContext.getDriver().findElement(By.xpath("//button[@id='login-button']")).click();
     }
 
-    @When("I login as")
-    public void iLoginAsEntity(List<User> users) {
-        User user = users.get(0);
-        System.out.println(users);
-        homePage.userIconClick();
-        homePage.fillLoginTextField(user.getUserName());
-        homePage.fillPasswordTextField(user.getPassword());
-        homePage.loginButtonClick();
-    }
 
-    @When("I click '(Home|Service)' header menu button")
-    public void iClickHeaderMenuButton(HeaderMenu menuItem) {
-        TestContext.getDriver()
-                .findElement(By
-                        .xpath("//ul[contains(@class, 'nav')]//a[contains(.,'"
-                                + menuItem.getName() + "')]")).click();
-    }
 
 }

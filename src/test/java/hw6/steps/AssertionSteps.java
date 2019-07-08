@@ -15,6 +15,7 @@ public class AssertionSteps extends BaseStep {
 
     @Then("User name should be '(.+)'")
     public void userNameShouldBe(String expectedUsername) {
+        // TODO I think this information exist in the page object
         WebElement userNameWebElement = TestContext.getDriver().findElement(By.id("user-name"));
         assertEquals(userNameWebElement.getText(), expectedUsername);
     }
@@ -39,6 +40,7 @@ public class AssertionSteps extends BaseStep {
         }
     }
 
+    // TODO Why this step is here? The name of the step def sounds like that I should go to the page
     @Then("I navigate to the '([^\"]*)' page")
     public void iNavigateToPage(String pageTitle) {
         assertEquals(differentElementsPage.getPageTitle(), pageTitle);
@@ -53,50 +55,59 @@ public class AssertionSteps extends BaseStep {
     }
 
     @Then("There are the Right Section and the Left Section")
+    // TODO It is better split this assertion to the 2
     public void thereAreLEftAndRightSections() {
         assertTrue(differentElementsPage.getLeftSection().isDisplayed());
         assertTrue(differentElementsPage.getRightSection().isDisplayed());
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' checkboxes are selected")
+    // TODO Could I verify another checkboxes?
     public void waterAndWindCheckboxesAreSelected(String waterCheckbox, String windCheckbox) {
         assertTrue(differentElementsPage.getCheckbox(waterCheckbox).isSelected());
         assertTrue(differentElementsPage.getCheckbox(windCheckbox).isSelected());
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' are present in true log rows")
+    // TODO Could I verify another checkboxes?
     public void waterAndWindArePresentInTrueLogRows(String waterLogRow, String windLogRow) {
         assertTrue(differentElementsPage.findLogRow(waterLogRow, "true").isDisplayed());
         assertTrue(differentElementsPage.findLogRow(windLogRow, "true").isDisplayed());
     }
 
     @Then("'([^\"]*)' radio button is selected")
+    // TODO Could I verify another radio button?
     public void selenCheckboxIsSelected(String radioButtonName) {
         assertTrue(differentElementsPage.getRadioButtonByName(radioButtonName).isSelected());
     }
 
     @Then("'([^\"]*)' is present in a metal log row")
+    // TODO Could I verify another radio button?
     public void selenIsPresentInLogRow(String metal) {
         assertTrue(differentElementsPage.findMetalLogRow(metal).isDisplayed());
     }
 
     @Then("'([^\"]*)' is selected in the dropdown")
+    // TODO Could I verify another value in the dropdown list?
     public void yellowIsSelectedInDropdown(String option) {
         assertTrue(differentElementsPage.getDropdownOption(option).isSelected());
     }
 
     @Then("'([^\"]*)' is present in a color log row")
+    // TODO Could I verify another value in the dropdown list?
     public void yellowIsPresentInLogRow(String color) {
         assertTrue(differentElementsPage.findColorLogRow(color).isDisplayed());
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' checkboxes are deselected")
+    // TODO Could I verify another checkboxes?
     public void waterWindCheckboxesAreDeselected(String waterCheckbox, String windCheckbox) {
         assertTrue(!differentElementsPage.getCheckbox(waterCheckbox).isSelected());
         assertTrue(!differentElementsPage.getCheckbox(windCheckbox).isSelected());
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' are present in false log rows")
+    // TODO Could I verify another checkboxes?
     public void waterAndWindArePresentInFalseLogRows(String waterLogRow, String windLogRow) {
         assertTrue(differentElementsPage.findLogRow(waterLogRow, "false").isDisplayed());
         assertTrue(differentElementsPage.findLogRow(windLogRow, "false").isDisplayed());

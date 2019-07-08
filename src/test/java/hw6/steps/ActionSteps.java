@@ -10,6 +10,7 @@ public class ActionSteps extends BaseStep {
 
     @When("I login as '([^\"]*)'/'([^\"]*)'")
     public void iLoginAs(String username, String password) {
+        // TODO I've seen this elements in the PageObject. Why do you decide use driver directly here?
         TestContext.getDriver().findElement(By.id("user-icon")).click();
         TestContext.getDriver().findElement(By.id("name")).sendKeys(username);
         TestContext.getDriver().findElement(By.cssSelector("#password")).sendKeys(password);
@@ -22,17 +23,20 @@ public class ActionSteps extends BaseStep {
     }
 
     @When("I select '([^\"]*)' and '([^\"]*)' checkboxes")
+    // TODO This is not good name for the method. Could I send another names of the checkboxes?
     public void iSelectWaterAndWindCheckboxes(String waterCheckbox, String windCheckbox) {
         homePage.clickCheckbox(waterCheckbox);
         homePage.clickCheckbox(windCheckbox);
     }
 
     @When("I select the '([^\"]*)' radio button")
+    // TODO This is not good name for the method. Could I send another name of the radio button?
     public void iSelectSelenRadioButton(String radioButtonName) {
         differentElementsPage.selectRadioButton(radioButtonName);
     }
 
     @When("I select '([^\"]*)' in the dropdown")
+    // TODO This is not good name for the method. Could I send another name of item in the dropdown?
     public void iSelectYellowInDropdown(String option) {
         differentElementsPage.selectDropdownOption(option);
     }

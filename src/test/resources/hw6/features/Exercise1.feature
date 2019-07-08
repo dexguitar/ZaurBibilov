@@ -14,13 +14,17 @@ Feature: Different Elements Page Functionality
     And There are the Right Section and the Left Section
     When I select 'Water' and 'Wind' checkboxes
     Then 'Water' and 'Wind' checkboxes are selected
+    # TODO Step a bit not clear
     And 'Water' and 'Wind' are present in true log rows
     When I select the 'Selen' radio button
     Then 'Selen' radio button is selected
+    # TODO Step a bit not clear
     And 'Selen' is present in a metal log row
     When I select 'Yellow' in the dropdown
     Then 'Yellow' is selected in the dropdown
+    # TODO Step a bit not clear
     And 'Yellow' is present in a color log row
     When I deselect 'Water' and 'Wind' checkboxes
     Then 'Water' and 'Wind' checkboxes are deselected
+    # TODO Step a bit not clear
     And 'Water' and 'Wind' are present in false log rows

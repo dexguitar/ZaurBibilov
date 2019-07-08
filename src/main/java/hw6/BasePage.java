@@ -19,6 +19,7 @@ public abstract class BasePage {
     }
 
     public void clickTopMenuElement(TopMenu menuItem) {
-        driver.findElement(By.xpath("//ul[contains(@class, 'nav')]//a[contains(text(), '" + menuItem.getName() + "')]")).click();
+        driver.findElement(By.xpath("//ul[contains(@class, 'nav')]//a[contains(text(), '" +
+                menuItem.getName() + "')]")).click();
     }
 }

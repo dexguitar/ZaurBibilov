@@ -38,6 +38,12 @@ public class UserTablePage extends BasePage {
         return instance;
     }
 
+    public static void killObject(WebDriver driver) {
+        if (instance != null) {
+            instance = null;
+        }
+    }
+
 
 //    ELEMENT GETTERS
 

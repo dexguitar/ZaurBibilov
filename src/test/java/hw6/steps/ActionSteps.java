@@ -4,6 +4,8 @@ import cucumber.api.java.en.When;
 import hw6.enums.ServiceDropdown;
 import hw6.enums.TopMenu;
 
+import java.util.List;
+
 public class ActionSteps extends BaseStep {
 
     @When("I login as '([^\"]*)'/'([^\"]*)'")
@@ -19,11 +21,10 @@ public class ActionSteps extends BaseStep {
         homePage.clickTopMenuElement(menuItem);
     }
 
-    @When("I select '([^\"]*)' and '([^\"]*)' checkboxes")
-    // TODO Could I send one value for checkbox?
-    public void iSelectCheckboxesByLabels(String checkbox1, String checkbox2) {
-        homePage.clickCheckbox(checkbox1);
-        homePage.clickCheckbox(checkbox2);
+    @When("I select checkboxes: '([^\"]*)' at the top")
+    // TODO Could I send one value for checkbox? => fixed || resolved
+    public void iSelectCheckboxesByLabel(List<String> labels) {
+        homePage.clickCheckbox(labels);
     }
 
     @When("I select the '([^\"]*)' radio button")

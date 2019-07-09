@@ -11,6 +11,11 @@ import static org.testng.Assert.*;
 
 public class AssertionSteps extends BaseStep {
 
+    @Then("I am on the '([^\"]*)' page")
+    public void iAmOnThePageN(String pageTitle) {
+        assertEquals(userTablePage.getPageTitle(), pageTitle);
+    }
+
     @Then("User name should be '(.+)'")
     public void userNameShouldBe(String expectedUsername) {
         assertEquals(homePage.getUsernameField().getText(), expectedUsername);
@@ -54,11 +59,12 @@ public class AssertionSteps extends BaseStep {
         assertTrue(differentElementsPage.getLeftSection().isDisplayed());
     }
 
-    @Then("'([^\"]*)' and '([^\"]*)' checkboxes are selected")
-    // TODO Could I verify only one value?
-    public void CheckboxesAreSelected(String checkbox1, String checkbox2) {
-        assertTrue(differentElementsPage.getCheckbox(checkbox1).isSelected());
-        assertTrue(differentElementsPage.getCheckbox(checkbox2).isSelected());
+    @Then("Checkboxes are selected: '([^\"]*)'")
+    // TODO Could I verify only one value? => fixed || resolved
+    public void CheckboxesAreSelected(List<String> checkBoxes) {
+        for (String checkbox : checkBoxes) {
+            assertTrue(differentElementsPage.getCheckbox(checkbox).isSelected());
+        }
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' are present in the log as '([^\"]*)'")
@@ -88,12 +94,13 @@ public class AssertionSteps extends BaseStep {
         assertTrue(differentElementsPage.findColorLogRow(color).isDisplayed());
     }
 
-    @Then("'([^\"]*)' and '([^\"]*)' checkboxes are deselected")
-    // TODO Could I verify only one value
-    public void checkboxesAreDeselected(String checkbox1, String checkbox2) {
-        // TODO I think it is better use assertFalse
-        assertTrue(!differentElementsPage.getCheckbox(checkbox1).isSelected());
-        assertTrue(!differentElementsPage.getCheckbox(checkbox2).isSelected());
+    @Then("Checkboxes are deselected: '([^\"]*)'")
+    // TODO Could I verify only one value => fixed || resolved
+    public void checkboxesAreDeselected(List<String> checkBoxes) {
+        // TODO I think it is better use assertFalse => fixed || resolved
+        for (String checkbox : checkBoxes) {
+            assertFalse(differentElementsPage.getCheckbox(checkbox).isSelected());
+        }
     }
 
 

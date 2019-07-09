@@ -105,8 +105,10 @@ public class HomePage extends BasePage {
                 item.getName() + "')]")).click();
     }
 
-    public void clickCheckbox(String checkboxName) {
-        driver.findElement(By.xpath("//label[@class='label-checkbox' and contains(., '" + checkboxName + "')]")).click();
+    public void clickCheckbox(List<String> labels) {
+        for (String label : labels) {
+            driver.findElement(By.xpath("//label[@class='label-checkbox' and contains(., '" + label + "')]")).click();
+        }
     }
 
     public void clickElement(WebElement element) {

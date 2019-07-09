@@ -10,13 +10,13 @@ Feature: Different Elements Page Functionality
     Then Dropdown should contain the following items: 'Support, Dates, Complex Table, Simple Table, User Table, Table with pages, Different elements, Performance'
     When I click 'DIFFERENT_ELEMENTS' in the 'Service' dropdown
     Then 'Different Elements' page contains 4 checkboxes, 4 radios, 1 dropdown and 2 buttons
-    # TODO There is - where is it?
+    # TODO There is - where is it? => That's what the spec says: "Assert that there is Right Section"
     And There is the Right Section
-    # TODO There is - where is it?
+    # TODO There is - where is it? => That's what the spec says: "Assert that there is Left Section"
     And There is the Left Section
-    # TODO I recommend add some location where these elements exist
-    When I select 'Water' and 'Wind' checkboxes
-    Then 'Water' and 'Wind' checkboxes are selected
+    # TODO I recommend add some location where these elements exist => fixed || resolved
+    When I select checkboxes: 'Water, Wind' at the top
+    Then Checkboxes are selected: 'Water, Wind'
     And 'Water' and 'Wind' are present in the log as 'true'
     When I select the 'Selen' radio button
     Then 'Selen' radio button is selected
@@ -25,5 +25,5 @@ Feature: Different Elements Page Functionality
     Then 'Yellow' is selected in the dropdown
     And 'Yellow' is present in the 'Colors: ' log row
     When I deselect 'Water' and 'Wind' checkboxes
-    Then 'Water' and 'Wind' checkboxes are deselected
+    Then Checkboxes are deselected: 'Water, Wind'
     And 'Water' and 'Wind' are present in the log as 'false'

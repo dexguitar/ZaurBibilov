@@ -8,7 +8,9 @@ Feature: User Table Page Functionality
     When I click 'SERVICE' header menu button
     And I click 'USER_TABLE' in the 'Service' dropdown
     # TODO Idea shows me that for the current step implementations could not be find((((
-    Then I navigate to the 'User Table' page
+    # TODO =>
+    # TODO fixed || resolved
+    Then I am on the 'User Table' page
     And There are 6 dropdowns, usernames, images, texts and checkboxes displayed
     And User Table contains following values:
       | userNumber | userName         | userDescription |

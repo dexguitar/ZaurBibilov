@@ -8,9 +8,6 @@ public class ActionSteps extends BaseStep {
 
     @When("I login as '([^\"]*)'/'([^\"]*)'")
     public void iLoginAs(String username, String password) {
-        // TODO I've seen this elements in the PageObject. Why do you decide use driver directly here?
-        //  =>
-        //  fixed || resolved
         homePage.clickElement(homePage.getUserIcon());
         homePage.getLoginNameTextField().sendKeys(username);
         homePage.getPasswordField().sendKeys(password);
@@ -23,26 +20,18 @@ public class ActionSteps extends BaseStep {
     }
 
     @When("I select '([^\"]*)' and '([^\"]*)' checkboxes")
-    // TODO This is not good name for the method. Could I send another names of the checkboxes?
-    //  =>
-    //  fixed || resolved
+    // TODO Could I send one value for checkbox?
     public void iSelectCheckboxesByLabels(String checkbox1, String checkbox2) {
         homePage.clickCheckbox(checkbox1);
         homePage.clickCheckbox(checkbox2);
     }
 
     @When("I select the '([^\"]*)' radio button")
-    // TODO This is not good name for the method. Could I send another name of the radio button?
-    //  =>
-    //  fixed || resolved
     public void iSelectRadioButtonByLabel(String radioButtonLabel) {
         differentElementsPage.selectRadioButton(radioButtonLabel);
     }
 
     @When("I select '([^\"]*)' in the dropdown")
-    // TODO This is not good name for the method. Could I send another name of item in the dropdown?
-    //  =>
-    //  fixed || resolved
     public void iSelectDropdownOptionByValue(String optionValue) {
         differentElementsPage.selectDropdownOption(optionValue);
     }

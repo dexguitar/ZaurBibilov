@@ -13,9 +13,6 @@ public class AssertionSteps extends BaseStep {
 
     @Then("User name should be '(.+)'")
     public void userNameShouldBe(String expectedUsername) {
-        // TODO I think this information exist in the page object
-        //  =>
-        //  fixed || resolved
         assertEquals(homePage.getUsernameField().getText(), expectedUsername);
     }
 
@@ -39,14 +36,6 @@ public class AssertionSteps extends BaseStep {
         }
     }
 
-    // TODO Why this step is here? The name of the step def sounds like that I should go to the page
-    //  =>
-    //  fixed || resolved
-//    @Then("I navigate to the '([^\"]*)' page")
-//    public void iNavigateToPage(String pageTitle) {
-//        assertEquals(differentElementsPage.getPageTitle(), pageTitle);
-//    }
-
     @Then("'Different Elements' page contains (\\d) checkboxes, (\\d) radios, (\\d) dropdown and (\\d) buttons")
     public void differentElementsPageInterfaceIsCorrect(int checkboxes, int radios, int dropdowns, int buttons) {
         assertEquals(differentElementsPage.getCheckboxes().size(), checkboxes);
@@ -56,7 +45,6 @@ public class AssertionSteps extends BaseStep {
     }
 
     @Then("There is the Right Section")
-    // TODO It is better split this assertion to the 2 => fixed || resolved
     public void thereIsRightSection() {
         assertTrue(differentElementsPage.getRightSection().isDisplayed());
     }
@@ -67,14 +55,13 @@ public class AssertionSteps extends BaseStep {
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' checkboxes are selected")
-    // TODO Could I verify another checkboxes? => fixed || resolved
+    // TODO Could I verify only one value?
     public void CheckboxesAreSelected(String checkbox1, String checkbox2) {
         assertTrue(differentElementsPage.getCheckbox(checkbox1).isSelected());
         assertTrue(differentElementsPage.getCheckbox(checkbox2).isSelected());
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' are present in the log as '([^\"]*)'")
-    // TODO Could I verify another checkboxes? => fixed || resolved
     public void valuesArePresentInTrueLogRows(String value1, String value2, String boolValue) {
         assertTrue(differentElementsPage.findLogRow(value1, boolValue).isDisplayed());
         assertTrue(differentElementsPage.findLogRow(value2, boolValue).isDisplayed());
@@ -87,36 +74,28 @@ public class AssertionSteps extends BaseStep {
     }
 
     @Then("'([^\"]*)' is present in the 'Metals: ' log row")
-    // TODO Could I verify another radio button? => fixed || resolved
     public void metalIsPresentInLogRow(String metal) {
         assertTrue(differentElementsPage.findMetalLogRow(metal).isDisplayed());
     }
 
     @Then("'([^\"]*)' is selected in the dropdown")
-    // TODO Could I verify another value in the dropdown list? => fixed || resolved
     public void colorIsSelectedInDropdown(String option) {
         assertTrue(differentElementsPage.getDropdownOption(option).isSelected());
     }
 
     @Then("'([^\"]*)' is present in the 'Colors: ' log row")
-    // TODO Could I verify another value in the dropdown list? => fixed || resolved
     public void colorIsPresentInLogRow(String color) {
         assertTrue(differentElementsPage.findColorLogRow(color).isDisplayed());
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' checkboxes are deselected")
-    // TODO Could I verify another checkboxes? => fixed || resolved
+    // TODO Could I verify only one value
     public void checkboxesAreDeselected(String checkbox1, String checkbox2) {
+        // TODO I think it is better use assertFalse
         assertTrue(!differentElementsPage.getCheckbox(checkbox1).isSelected());
         assertTrue(!differentElementsPage.getCheckbox(checkbox2).isSelected());
     }
 
-//    @Then("'([^\"]*)' and '([^\"]*)' are present in false log rows")
-//    // TODO Could I verify another checkboxes? => fixed || resolved
-//    public void valuesArePresentInFalseLogRows(String value1, String value2) {
-//        assertTrue(differentElementsPage.findLogRow(value1, "false").isDisplayed());
-//        assertTrue(differentElementsPage.findLogRow(value2, "false").isDisplayed());
-//    }
 
     @Then("There are (\\d) dropdowns, usernames, images, texts and checkboxes displayed")
     public void thereAreNElementsDisplayed(int number) {

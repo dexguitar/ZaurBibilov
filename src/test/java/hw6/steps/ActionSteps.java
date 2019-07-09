@@ -3,18 +3,18 @@ package hw6.steps;
 import cucumber.api.java.en.When;
 import hw6.enums.ServiceDropdown;
 import hw6.enums.TopMenu;
-import hw6.hooks.TestContext;
-import org.openqa.selenium.By;
 
 public class ActionSteps extends BaseStep {
 
     @When("I login as '([^\"]*)'/'([^\"]*)'")
     public void iLoginAs(String username, String password) {
         // TODO I've seen this elements in the PageObject. Why do you decide use driver directly here?
-        TestContext.getDriver().findElement(By.id("user-icon")).click();
-        TestContext.getDriver().findElement(By.id("name")).sendKeys(username);
-        TestContext.getDriver().findElement(By.cssSelector("#password")).sendKeys(password);
-        TestContext.getDriver().findElement(By.xpath("//button[@id='login-button']")).click();
+        //  =>
+        //  fixed || resolved
+        homePage.clickElement(homePage.getUserIcon());
+        homePage.getLoginNameTextField().sendKeys(username);
+        homePage.getPasswordField().sendKeys(password);
+        homePage.clickElement(homePage.getLoginButton());
     }
 
     @When("I click '(SERVICE|HOME)' header menu button")
@@ -24,21 +24,27 @@ public class ActionSteps extends BaseStep {
 
     @When("I select '([^\"]*)' and '([^\"]*)' checkboxes")
     // TODO This is not good name for the method. Could I send another names of the checkboxes?
-    public void iSelectWaterAndWindCheckboxes(String waterCheckbox, String windCheckbox) {
-        homePage.clickCheckbox(waterCheckbox);
-        homePage.clickCheckbox(windCheckbox);
+    //  =>
+    //  fixed || resolved
+    public void iSelectCheckboxesByLabels(String checkbox1, String checkbox2) {
+        homePage.clickCheckbox(checkbox1);
+        homePage.clickCheckbox(checkbox2);
     }
 
     @When("I select the '([^\"]*)' radio button")
     // TODO This is not good name for the method. Could I send another name of the radio button?
-    public void iSelectSelenRadioButton(String radioButtonName) {
-        differentElementsPage.selectRadioButton(radioButtonName);
+    //  =>
+    //  fixed || resolved
+    public void iSelectRadioButtonByLabel(String radioButtonLabel) {
+        differentElementsPage.selectRadioButton(radioButtonLabel);
     }
 
     @When("I select '([^\"]*)' in the dropdown")
     // TODO This is not good name for the method. Could I send another name of item in the dropdown?
-    public void iSelectYellowInDropdown(String option) {
-        differentElementsPage.selectDropdownOption(option);
+    //  =>
+    //  fixed || resolved
+    public void iSelectDropdownOptionByValue(String optionValue) {
+        differentElementsPage.selectDropdownOption(optionValue);
     }
 
     @When("I deselect '([^\"]*)' and '([^\"]*)' checkboxes")

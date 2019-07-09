@@ -24,7 +24,8 @@ public class HomePage extends BasePage {
     @FindBy(id = "name")
     private WebElement loginNameTextField;
 
-    private WebElement password;
+    @FindBy(id = "password")
+    private WebElement passwordField;
 
     @FindBy(xpath = "//button[@id='login-button']")
     private WebElement loginButton;
@@ -37,6 +38,9 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//ul[@class='dropdown-menu']//a")
     private List<WebElement> serviceDropdown;
+
+    @FindBy(id = "user-name")
+    private WebElement usernameField;
 
     private HomePage(WebDriver driver) {
         super(driver);
@@ -76,6 +80,26 @@ public class HomePage extends BasePage {
         return serviceDropdown;
     }
 
+    public WebElement getUserIcon() {
+        return userIcon;
+    }
+
+    public WebElement getLoginNameTextField() {
+        return loginNameTextField;
+    }
+
+    public WebElement getPasswordField() {
+        return passwordField;
+    }
+
+    public WebElement getLoginButton() {
+        return loginButton;
+    }
+
+    public WebElement getUsernameField() {
+        return usernameField;
+    }
+
     public void clickServiceDropdownItem(ServiceDropdown item) {
         driver.findElement(By.xpath("//ul[@class='dropdown-menu']//li[contains(., '" +
                 item.getName() + "')]")).click();
@@ -83,6 +107,10 @@ public class HomePage extends BasePage {
 
     public void clickCheckbox(String checkboxName) {
         driver.findElement(By.xpath("//label[@class='label-checkbox' and contains(., '" + checkboxName + "')]")).click();
+    }
+
+    public void clickElement(WebElement element) {
+        element.click();
     }
 
 }

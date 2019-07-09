@@ -2,8 +2,6 @@ package hw6.steps;
 
 import cucumber.api.java.en.Then;
 import hw6.entities.User;
-import hw6.hooks.TestContext;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -16,8 +14,9 @@ public class AssertionSteps extends BaseStep {
     @Then("User name should be '(.+)'")
     public void userNameShouldBe(String expectedUsername) {
         // TODO I think this information exist in the page object
-        WebElement userNameWebElement = TestContext.getDriver().findElement(By.id("user-name"));
-        assertEquals(userNameWebElement.getText(), expectedUsername);
+        //  =>
+        //  fixed || resolved
+        assertEquals(homePage.getUsernameField().getText(), expectedUsername);
     }
 
     @Then("There are (\\d) pictures, (\\d) texts under them, a headline and a description")
@@ -41,10 +40,12 @@ public class AssertionSteps extends BaseStep {
     }
 
     // TODO Why this step is here? The name of the step def sounds like that I should go to the page
-    @Then("I navigate to the '([^\"]*)' page")
-    public void iNavigateToPage(String pageTitle) {
-        assertEquals(differentElementsPage.getPageTitle(), pageTitle);
-    }
+    //  =>
+    //  fixed || resolved
+//    @Then("I navigate to the '([^\"]*)' page")
+//    public void iNavigateToPage(String pageTitle) {
+//        assertEquals(differentElementsPage.getPageTitle(), pageTitle);
+//    }
 
     @Then("'Different Elements' page contains (\\d) checkboxes, (\\d) radios, (\\d) dropdown and (\\d) buttons")
     public void differentElementsPageInterfaceIsCorrect(int checkboxes, int radios, int dropdowns, int buttons) {
@@ -54,64 +55,68 @@ public class AssertionSteps extends BaseStep {
         assertEquals(differentElementsPage.getButtons().size(), buttons);
     }
 
-    @Then("There are the Right Section and the Left Section")
-    // TODO It is better split this assertion to the 2
-    public void thereAreLEftAndRightSections() {
-        assertTrue(differentElementsPage.getLeftSection().isDisplayed());
+    @Then("There is the Right Section")
+    // TODO It is better split this assertion to the 2 => fixed || resolved
+    public void thereIsRightSection() {
         assertTrue(differentElementsPage.getRightSection().isDisplayed());
     }
 
-    @Then("'([^\"]*)' and '([^\"]*)' checkboxes are selected")
-    // TODO Could I verify another checkboxes?
-    public void waterAndWindCheckboxesAreSelected(String waterCheckbox, String windCheckbox) {
-        assertTrue(differentElementsPage.getCheckbox(waterCheckbox).isSelected());
-        assertTrue(differentElementsPage.getCheckbox(windCheckbox).isSelected());
+    @Then("There is the Left Section")
+    public void thereIsLeftSection() {
+        assertTrue(differentElementsPage.getLeftSection().isDisplayed());
     }
 
-    @Then("'([^\"]*)' and '([^\"]*)' are present in true log rows")
-    // TODO Could I verify another checkboxes?
-    public void waterAndWindArePresentInTrueLogRows(String waterLogRow, String windLogRow) {
-        assertTrue(differentElementsPage.findLogRow(waterLogRow, "true").isDisplayed());
-        assertTrue(differentElementsPage.findLogRow(windLogRow, "true").isDisplayed());
+    @Then("'([^\"]*)' and '([^\"]*)' checkboxes are selected")
+    // TODO Could I verify another checkboxes? => fixed || resolved
+    public void CheckboxesAreSelected(String checkbox1, String checkbox2) {
+        assertTrue(differentElementsPage.getCheckbox(checkbox1).isSelected());
+        assertTrue(differentElementsPage.getCheckbox(checkbox2).isSelected());
+    }
+
+    @Then("'([^\"]*)' and '([^\"]*)' are present in the log as '([^\"]*)'")
+    // TODO Could I verify another checkboxes? => fixed || resolved
+    public void valuesArePresentInTrueLogRows(String value1, String value2, String boolValue) {
+        assertTrue(differentElementsPage.findLogRow(value1, boolValue).isDisplayed());
+        assertTrue(differentElementsPage.findLogRow(value2, boolValue).isDisplayed());
     }
 
     @Then("'([^\"]*)' radio button is selected")
-    // TODO Could I verify another radio button?
-    public void selenCheckboxIsSelected(String radioButtonName) {
-        assertTrue(differentElementsPage.getRadioButtonByName(radioButtonName).isSelected());
+    // TODO Could I verify another radio button? => fixed || resolved
+    public void radioButtonIsSelected(String radioButtonLabel) {
+        assertTrue(differentElementsPage.getRadioButtonByName(radioButtonLabel).isSelected());
     }
 
-    @Then("'([^\"]*)' is present in a metal log row")
-    // TODO Could I verify another radio button?
-    public void selenIsPresentInLogRow(String metal) {
+    @Then("'([^\"]*)' is present in the 'Metals: ' log row")
+    // TODO Could I verify another radio button? => fixed || resolved
+    public void metalIsPresentInLogRow(String metal) {
         assertTrue(differentElementsPage.findMetalLogRow(metal).isDisplayed());
     }
 
     @Then("'([^\"]*)' is selected in the dropdown")
-    // TODO Could I verify another value in the dropdown list?
-    public void yellowIsSelectedInDropdown(String option) {
+    // TODO Could I verify another value in the dropdown list? => fixed || resolved
+    public void colorIsSelectedInDropdown(String option) {
         assertTrue(differentElementsPage.getDropdownOption(option).isSelected());
     }
 
-    @Then("'([^\"]*)' is present in a color log row")
-    // TODO Could I verify another value in the dropdown list?
-    public void yellowIsPresentInLogRow(String color) {
+    @Then("'([^\"]*)' is present in the 'Colors: ' log row")
+    // TODO Could I verify another value in the dropdown list? => fixed || resolved
+    public void colorIsPresentInLogRow(String color) {
         assertTrue(differentElementsPage.findColorLogRow(color).isDisplayed());
     }
 
     @Then("'([^\"]*)' and '([^\"]*)' checkboxes are deselected")
-    // TODO Could I verify another checkboxes?
-    public void waterWindCheckboxesAreDeselected(String waterCheckbox, String windCheckbox) {
-        assertTrue(!differentElementsPage.getCheckbox(waterCheckbox).isSelected());
-        assertTrue(!differentElementsPage.getCheckbox(windCheckbox).isSelected());
+    // TODO Could I verify another checkboxes? => fixed || resolved
+    public void checkboxesAreDeselected(String checkbox1, String checkbox2) {
+        assertTrue(!differentElementsPage.getCheckbox(checkbox1).isSelected());
+        assertTrue(!differentElementsPage.getCheckbox(checkbox2).isSelected());
     }
 
-    @Then("'([^\"]*)' and '([^\"]*)' are present in false log rows")
-    // TODO Could I verify another checkboxes?
-    public void waterAndWindArePresentInFalseLogRows(String waterLogRow, String windLogRow) {
-        assertTrue(differentElementsPage.findLogRow(waterLogRow, "false").isDisplayed());
-        assertTrue(differentElementsPage.findLogRow(windLogRow, "false").isDisplayed());
-    }
+//    @Then("'([^\"]*)' and '([^\"]*)' are present in false log rows")
+//    // TODO Could I verify another checkboxes? => fixed || resolved
+//    public void valuesArePresentInFalseLogRows(String value1, String value2) {
+//        assertTrue(differentElementsPage.findLogRow(value1, "false").isDisplayed());
+//        assertTrue(differentElementsPage.findLogRow(value2, "false").isDisplayed());
+//    }
 
     @Then("There are (\\d) dropdowns, usernames, images, texts and checkboxes displayed")
     public void thereAreNElementsDisplayed(int number) {
@@ -142,12 +147,5 @@ public class AssertionSteps extends BaseStep {
                 .stream().map(WebElement::getText).collect(Collectors.toList());
         assertTrue(dropdown.containsAll(expectedContents));
     }
-//    @Then("Droplist for user '([^\\\"]*)' contains values:")
-//    public void droplistContainsValues(String user, Droplist droplist) {
-//        List<WebElement> dropdownElements = userTablePage.getDropdownContentsForUser(user);
-//        for (WebElement element : dropdownElements) {
-//            assertEquals(element.getText(), droplist.getValue());
-//        }
-//    }
 
 }

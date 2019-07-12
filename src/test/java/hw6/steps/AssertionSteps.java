@@ -60,7 +60,6 @@ public class AssertionSteps extends BaseStep {
     }
 
     @Then("Checkboxes are selected: '([^\"]*)'")
-    // TODO Could I verify only one value? => fixed || resolved
     public void CheckboxesAreSelected(List<String> checkBoxes) {
         for (String checkbox : checkBoxes) {
             assertTrue(differentElementsPage.getCheckbox(checkbox).isSelected());
@@ -74,7 +73,6 @@ public class AssertionSteps extends BaseStep {
     }
 
     @Then("'([^\"]*)' radio button is selected")
-    // TODO Could I verify another radio button? => fixed || resolved
     public void radioButtonIsSelected(String radioButtonLabel) {
         assertTrue(differentElementsPage.getRadioButtonByName(radioButtonLabel).isSelected());
     }
@@ -95,9 +93,7 @@ public class AssertionSteps extends BaseStep {
     }
 
     @Then("Checkboxes are deselected: '([^\"]*)'")
-    // TODO Could I verify only one value => fixed || resolved
     public void checkboxesAreDeselected(List<String> checkBoxes) {
-        // TODO I think it is better use assertFalse => fixed || resolved
         for (String checkbox : checkBoxes) {
             assertFalse(differentElementsPage.getCheckbox(checkbox).isSelected());
         }

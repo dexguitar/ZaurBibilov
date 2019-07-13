@@ -22,7 +22,6 @@ public class ActionSteps extends BaseStep {
     }
 
     @When("I select checkboxes: '([^\"]*)' at the top")
-    // TODO Could I send one value for checkbox? => fixed || resolved
     public void iSelectCheckboxesByLabel(List<String> labels) {
         homePage.clickCheckbox(labels);
     }

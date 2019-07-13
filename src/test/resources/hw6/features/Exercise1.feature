@@ -11,10 +11,13 @@ Feature: Different Elements Page Functionality
     When I click 'DIFFERENT_ELEMENTS' in the 'Service' dropdown
     Then 'Different Elements' page contains 4 checkboxes, 4 radios, 1 dropdown and 2 buttons
     # TODO There is - where is it? => That's what the spec says: "Assert that there is Right Section"
+    # TODO Not resolved
     And There is the Right Section
     # TODO There is - where is it? => That's what the spec says: "Assert that there is Left Section"
+    # TODO Not resolved
     And There is the Left Section
     # TODO I recommend add some location where these elements exist => fixed || resolved
+    # TODO at the top? It is where?
     When I select checkboxes: 'Water, Wind' at the top
     Then Checkboxes are selected: 'Water, Wind'
     And 'Water' and 'Wind' are present in the log as 'true'

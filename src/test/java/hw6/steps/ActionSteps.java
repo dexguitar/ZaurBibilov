@@ -21,7 +21,7 @@ public class ActionSteps extends BaseStep {
         homePage.clickTopMenuElement(menuItem);
     }
 
-    @When("I select checkboxes: '([^\"]*)' at the top")
+    @When("I select checkboxes: '([^\"]*)' at the top of the main content section")
     public void iSelectCheckboxesByLabel(List<String> labels) {
         homePage.clickCheckbox(labels);
     }

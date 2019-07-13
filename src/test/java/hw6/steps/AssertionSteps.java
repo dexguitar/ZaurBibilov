@@ -49,12 +49,12 @@ public class AssertionSteps extends BaseStep {
         assertEquals(differentElementsPage.getButtons().size(), buttons);
     }
 
-    @Then("There is the Right Section")
+    @Then("There is the Right Section in the right part of the page")
     public void thereIsRightSection() {
         assertTrue(differentElementsPage.getRightSection().isDisplayed());
     }
 
-    @Then("There is the Left Section")
+    @Then("There is the Left Section in the left part of the page")
     public void thereIsLeftSection() {
         assertTrue(differentElementsPage.getLeftSection().isDisplayed());
     }
